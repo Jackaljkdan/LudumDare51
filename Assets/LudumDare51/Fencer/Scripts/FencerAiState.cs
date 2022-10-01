@@ -10,7 +10,9 @@ namespace LudumDare51.Fencer
     public enum FencerAiState
     {
         Idle,
-        Attack,
-        Parry,
+        IdleNoParry,
+        Attacking,
+        ParryWaiting,
+        Parrying,
     }
 }

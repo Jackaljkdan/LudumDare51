@@ -1,6 +1,7 @@
 using JK.Injection;
 using JK.Injection.PropertyDrawers;
 using JK.PropertyDrawers;
+using JK.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -17,10 +18,13 @@ namespace LudumDare51.Fencer
 
         public FencerController controller;
 
-        public float averageAttacksPerSecond = 2f;
-        public float delta = 0.5f;
-
         public float parryDelay = 0.2f;
+
+        public float averageAttacksPerSecond = 2f;
+        public float deltaAttacksPerSeconds = 0.5f;
+
+        public float parryProbability = 0.5f;
+        public float counterProbability = 0.5f;
 
         [RuntimeHeader]
 
@@ -57,11 +61,17 @@ namespace LudumDare51.Fencer
                 case FencerAiState.Idle:
                     IdleUpdate();
                     break;
-                case FencerAiState.Attack:
-                    AttackUpdate();
+                case FencerAiState.IdleNoParry:
+                    IdleNoParryUpdate();
                     break;
-                case FencerAiState.Parry:
-                    ParryUpdate();
+                case FencerAiState.Attacking:
+                    AttackingUpdate();
+                    break;
+                case FencerAiState.ParryWaiting:
+                    ParryWaitingUpdate();
+                    break;
+                case FencerAiState.Parrying:
+                    ParryingUpdate();
                     break;
             }
         }
@@ -76,36 +86,84 @@ namespace LudumDare51.Fencer
         {
             if (player.isAttacking && !player.wasAttackActive)
             {
-                if (player.IsCurrentAnimation(player.stance.AttackAnimationName()) && player.GetCurrentAnimationNormalizedTime() >= parryDelay)
+                if (RandomUtils.Should(parryProbability))
                 {
-                    EnterParry();
+                    EnterParryWaiting();
+                    ParryWaitingUpdate();
                     return;
                 }
+
+                state = FencerAiState.IdleNoParry;
+            }
+
+            IdleNoParryUpdate();
+        }
+
+        private void IdleNoParryUpdate()
+        {
+            if (nextAttackTime == 0)
+                nextAttackTime = Time.time + RandomUtils.TimeUntilNextEvent(averageAttacksPerSecond, deltaAttacksPerSeconds);
+
+            if (Time.time >= nextAttackTime)
+            {
+                EnterAttacking();
+                return;
+            }
+
+            if (player.wasAttackActive)
+                state = FencerAiState.Idle;
+        }
+
+        private void EnterAttacking()
+        {
+            state = FencerAiState.Attacking;
+            controller.Attack();
+        }
+
+        private void AttackingUpdate()
+        {
+            if (controller.canParry)
+            {
+                EnterIdle();
+                IdleUpdate();
             }
         }
 
-        private void EnterAttack()
+        private void EnterParryWaiting()
         {
-            state = FencerAiState.Attack;
+            state = FencerAiState.ParryWaiting;
         }
 
-        private void AttackUpdate()
+        private void ParryWaitingUpdate()
         {
+            if (!player.isAttacking)
+            {
+                EnterIdle();
+                IdleUpdate();
+                return;
+            }
 
+            if (player.IsCurrentAnimation(player.stance.AttackAnimationName())
+                && player.GetCurrentAnimationNormalizedTime() >= parryDelay
+            )
+                EnterParrying();
         }
 
-        private void EnterParry()
+        private void EnterParrying()
         {
-            state = FencerAiState.Parry;
+            state = FencerAiState.Parrying;
             controller.Parry();
         }
 
-        private void ParryUpdate()
+        private void ParryingUpdate()
         {
             if (!controller.canAttack)
                 return;
 
-            EnterIdle();
+            if (RandomUtils.Should(counterProbability))
+                EnterAttacking();
+            else
+                EnterIdle();
         }
     }
 }
