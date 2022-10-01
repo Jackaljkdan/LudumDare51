@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: de94ed8e0d2c64940ba450dc9e45bcb2
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Silkscreen
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 1b4fa0a2f60e32e4e924a9d526a68f68, type: 3}
+  - {fileID: 12800000, guid: 52fd3720abf4ffd4d955b2112b196f9e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

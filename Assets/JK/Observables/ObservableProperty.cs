@@ -39,6 +39,13 @@ namespace JK.Observables
 
         public UnityEvent<Changed> onChange = new UnityEvent<Changed>();
 
+        public ObservableProperty() { }
+
+        public ObservableProperty(T initialValue)
+        {
+            SetSilently(initialValue);
+        }
+
         public void SetSilently(T value)
         {
             _value = value;
