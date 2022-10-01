@@ -39,8 +39,8 @@ namespace LudumDare51.Rounds
             GetComponent<Text>().text = $"Round {arg.updated}";
 
             var seq = DOTween.Sequence();
-            seq.Append(transform.DOScale(1.5f, 0.75f));
-            seq.Append(transform.DOScale(1, 0.75f));
+            seq.Append(transform.DOScale(1.5f, 0.5f));
+            seq.Append(transform.DOScale(1, 0.5f));
         }
     }
 }

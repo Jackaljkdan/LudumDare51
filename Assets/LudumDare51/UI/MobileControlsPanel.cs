@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LudumDare51
+namespace LudumDare51.UI
 {
     [DisallowMultipleComponent]
     public class MobileControlsPanel : MonoBehaviour

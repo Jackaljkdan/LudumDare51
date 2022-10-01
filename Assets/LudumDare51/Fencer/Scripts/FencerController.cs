@@ -55,6 +55,7 @@ namespace LudumDare51.Fencer
         {
             stance = FencerStance.Thrust;
             ForceAllowAll();
+            attributes.Reset();
         }
 
         private void Update()
