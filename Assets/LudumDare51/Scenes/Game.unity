@@ -154,13 +154,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   installersParent: {fileID: 1475058549}
   context:
-    rid: 4814920883858046981
+    rid: 4814920885520826369
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 4814920883858046981
+    - rid: 4814920885520826369
       type: {class: Context, ns: JK.Injection, asm: Assembly-CSharp}
       data:
         name: RootContext
@@ -533,10 +533,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 496426575}
   parryDelay: 0.2
+  hitParryDelay: 0.3
+  counterDelay: 0.15
   averageSecondsBetweenAttacks: 100
   deltaSecondsBetweenAttacks: 0.5
-  parryProbability: 0.5
+  parryProbability: 1
   counterProbability: 1
+  counterDelayProbability: 1
   nextAttackTime: 0
   state: 0
   player: {fileID: 1930817101}

@@ -20,12 +20,14 @@ namespace LudumDare51.Fencer
 
         public float parryDelay = 0.2f;
         public float hitParryDelay = 0.3f;
+        public float counterDelay = 0.2f;
 
         public float averageSecondsBetweenAttacks = 2f;
         public float deltaSecondsBetweenAttacks = 0.5f;
 
         public float parryProbability = 0.5f;
         public float counterProbability = 0.5f;
+        public float counterDelayProbability = 0.5f;
 
         [RuntimeHeader]
 
@@ -59,7 +61,6 @@ namespace LudumDare51.Fencer
         {
             switch (state)
             {
-                default:
                 case FencerAiState.Idle:
                     IdleUpdate();
                     break;
@@ -74,6 +75,9 @@ namespace LudumDare51.Fencer
                     break;
                 case FencerAiState.Parrying:
                     ParryingUpdate();
+                    break;
+                case FencerAiState.Counter:
+                    CounterUpdate();
                     break;
                 case FencerAiState.Hit:
                     HitUpdate();
@@ -115,7 +119,7 @@ namespace LudumDare51.Fencer
                 return;
             }
 
-            if (player.wasAttackActive)
+            if (!player.isAttacking || player.wasAttackActive)
                 state = FencerAiState.Idle;
         }
 
@@ -180,9 +184,29 @@ namespace LudumDare51.Fencer
                 return;
 
             if (RandomUtils.Should(counterProbability))
-                EnterAttacking();
+            {
+                EnterCounter();
+                CounterUpdate();
+                return;
+            }
+
+            EnterIdle();
+        }
+
+        private void EnterCounter()
+        {
+            state = FencerAiState.Counter;
+
+            if (RandomUtils.Should(counterDelayProbability))
+                nextAttackTime = Time.time + counterDelay;
             else
-                EnterIdle();
+                nextAttackTime = Time.time;
+        }
+
+        private void CounterUpdate()
+        {
+            if (Time.time >= nextAttackTime)
+                EnterAttacking();
         }
 
         private void EnterHit()
