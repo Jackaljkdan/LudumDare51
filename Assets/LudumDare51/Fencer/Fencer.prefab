@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 624220349163322935}
   - component: {fileID: 624220349163322928}
   - component: {fileID: 624220349163322929}
+  - component: {fileID: 3854540993906471080}
   m_Layer: 0
   m_Name: Fencer
   m_TagString: Untagged
@@ -68,6 +69,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 624220349163322928}
   parryToAttackOffsetSeconds: 0.2
+  reboundBlendSeconds: 0.1
+  onAttack:
+    m_PersistentCalls:
+      m_Calls: []
   canAttack: 0
   canParry: 0
   isAttacking: 0
@@ -76,6 +81,22 @@ MonoBehaviour:
   isParryActive: 0
   bufferedCommand: 0
   stance: 0
+--- !u!54 &3854540993906471080
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 624220349163322934}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 10
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 124
+  m_CollisionDetection: 1
 --- !u!1001 &624220348683984362
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -150,6 +171,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4da5a0e8fdd8d034cb1718b615694be9, type: 3}
+--- !u!1 &317720138963755195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 4da5a0e8fdd8d034cb1718b615694be9,
+    type: 3}
+  m_PrefabInstance: {fileID: 624220348683984362}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3913016615536504761
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317720138963755195}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.07, y: 1.1, z: 0.05272476}
+  m_Center: {x: 0.00000030576558, y: -0.75, z: 0.0001481556}
+--- !u!114 &8555754829096242060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 317720138963755195}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6be0d8c1cf324a469311794f07b14e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wielder: {fileID: 0}
+  alreadyHit: 0
 --- !u!1001 &624220349649260101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -226,6 +280,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 624220349649260101}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4905502480435128799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5528860797864257434, guid: 4ef40115bd6076d4f99286a107bf6912,
+    type: 3}
+  m_PrefabInstance: {fileID: 624220349649260101}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8325367793523648636
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4905502480435128799}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.6, y: 1.8, z: 0.3}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!4 &6894619048881340939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6271040822890515534, guid: 4ef40115bd6076d4f99286a107bf6912,

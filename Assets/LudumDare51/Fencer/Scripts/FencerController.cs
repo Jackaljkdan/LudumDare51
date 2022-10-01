@@ -16,6 +16,11 @@ namespace LudumDare51.Fencer
         public Animator animator;
 
         public float parryToAttackOffsetSeconds = 0.2f;
+        public float reboundToParryOffsetSeconds = 0.1f;
+
+        public float reboundBlendSeconds = 0.1f;
+
+        public UnityEvent onAttack = new UnityEvent();
 
         [RuntimeHeader]
 
@@ -75,6 +80,8 @@ namespace LudumDare51.Fencer
                 CrossFade(stance.AttackAnimationName(), transitionSeconds: 0.2f, offsetSeconds: parryToAttackOffsetSeconds);
             else
                 CrossFade(stance.AttackAnimationName());
+
+            onAttack.Invoke();
         }
 
         public void Parry()
@@ -86,7 +93,25 @@ namespace LudumDare51.Fencer
             }
 
             DisallowAll();
-            CrossFade(stance.ParryAnimationName());
+
+            if (GetAttackBlend() > 0)
+                CrossFade(stance.ParryAnimationName(), transitionSeconds: 0.2f, reboundToParryOffsetSeconds);
+            else
+                CrossFade(stance.ParryAnimationName());
+        }
+
+        public void Rebound()
+        {
+            ResetStatus();
+            wasAttackActive = true;
+            SetAttackBlend(1, reboundBlendSeconds);
+        }
+
+        public void GetHit(FencerStance byStance)
+        {
+            DisallowAll();
+            ResetStatus();
+            CrossFade(byStance.HitAnimationName());
         }
 
         public void DisallowAll()
@@ -155,6 +180,11 @@ namespace LudumDare51.Fencer
         public void DeactivateParry()
         {
             isParryActive = false;
+        }
+
+        public float GetAttackBlend()
+        {
+            return animator.GetFloat("AttackBlend");
         }
 
         public void SetAttackBlend(float blend, float seconds = 0)

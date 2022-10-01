@@ -23,5 +23,10 @@ namespace LudumDare51.Fencer
         {
             return "Parry" + self;
         }
+
+        public static string HitAnimationName(this FencerStance self)
+        {
+            return "Hit" + self;
+        }
     }
 }
