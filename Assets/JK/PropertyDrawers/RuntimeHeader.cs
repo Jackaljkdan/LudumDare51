@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEditor.ShaderGraph.Drawing.Inspector;
 
 #if UNITY_EDITOR
 using UnityEditor;
