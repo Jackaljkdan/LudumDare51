@@ -26,6 +26,7 @@ namespace LudumDare51.Fencer
         public float deltaSecondsBetweenAttacks = 0.5f;
 
         public float parryProbability = 0.5f;
+        public float blindParryAfterReboundProbability = 0.5f;
         public float counterProbability = 0.5f;
         public float counterDelayProbability = 0.5f;
 
@@ -54,6 +55,7 @@ namespace LudumDare51.Fencer
         private void Start()
         {
             state = FencerAiState.Idle;
+            controller.onRebound.AddListener(OnRebound);
             controller.onHit.AddListener(OnHit);
         }
 
@@ -221,6 +223,12 @@ namespace LudumDare51.Fencer
                 EnterIdle();
                 IdleUpdate();
             }
+        }
+
+        private void OnRebound()
+        {
+            if (RandomUtils.Should(blindParryAfterReboundProbability))
+                controller.Parry();
         }
 
         private void OnHit()
