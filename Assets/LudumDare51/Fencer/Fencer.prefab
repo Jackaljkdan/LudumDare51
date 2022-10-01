@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 624220349163322928}
   - component: {fileID: 624220349163322929}
   - component: {fileID: 3854540993906471080}
-  - component: {fileID: 8142143510862610720}
   m_Layer: 0
   m_Name: Fencer
   m_TagString: Untagged
@@ -68,11 +67,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996fda6de9e2e33499939c11b05f8b36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 624220349163322928}
-  parryToAttackOffsetSeconds: 0.2
-  hitToAnyOffsetSeconds: 0.2
-  reboundToParryOffsetSeconds: 0.1
-  reboundBlendSeconds: 0.1
+  attributes:
+    maxHealthPoints:
+      _value: 2
+      onChange:
+        m_PersistentCalls:
+          m_Calls: []
+    healthPoints:
+      _value: 0
+      onChange:
+        m_PersistentCalls:
+          m_Calls: []
   onAttack:
     m_PersistentCalls:
       m_Calls: []
@@ -82,6 +87,11 @@ MonoBehaviour:
   onHit:
     m_PersistentCalls:
       m_Calls: []
+  animator: {fileID: 624220349163322928}
+  parryToAttackOffsetSeconds: 0.2
+  hitToAnyOffsetSeconds: 0.2
+  reboundToParryOffsetSeconds: 0.1
+  reboundBlendSeconds: 0.1
   canAttack: 0
   canParry: 0
   isAttacking: 0
@@ -106,29 +116,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 1
---- !u!114 &8142143510862610720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 624220349163322934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76528dc4a792a3f4ba218bcf24e89c7d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealthPoints:
-    _value: 2
-    onChange:
-      m_PersistentCalls:
-        m_Calls: []
-  controller: {fileID: 624220349163322929}
-  healthPoints:
-    _value: 0
-    onChange:
-      m_PersistentCalls:
-        m_Calls: []
 --- !u!1 &7717309127938773570
 GameObject:
   m_ObjectHideFlags: 0

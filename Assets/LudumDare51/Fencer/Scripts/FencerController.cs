@@ -13,6 +13,14 @@ namespace LudumDare51.Fencer
     {
         #region Inspector
 
+        public FencerAttributes attributes;
+
+        public UnityEvent onAttack = new UnityEvent();
+        public UnityEvent onRebound = new UnityEvent();
+        public UnityEvent onHit = new UnityEvent();
+
+        [Header("Internals")]
+
         public Animator animator;
 
         public float parryToAttackOffsetSeconds = 0.2f;
@@ -20,10 +28,6 @@ namespace LudumDare51.Fencer
         public float reboundToParryOffsetSeconds = 0.1f;
 
         public float reboundBlendSeconds = 0.1f;
-
-        public UnityEvent onAttack = new UnityEvent();
-        public UnityEvent onRebound = new UnityEvent();
-        public UnityEvent onHit = new UnityEvent();
 
         [RuntimeHeader]
 
@@ -51,7 +55,6 @@ namespace LudumDare51.Fencer
         {
             stance = FencerStance.Thrust;
             ForceAllowAll();
-            ResetStatus();
         }
 
         private void Update()
@@ -130,9 +133,28 @@ namespace LudumDare51.Fencer
         {
             DisallowAll();
             ResetStatus();
-            CrossFade(byStance.HitAnimationName());
+            attributes.healthPoints.Value--;
+
+            if (attributes.healthPoints.Value > 0)
+            {
+                CrossFade(byStance.HitAnimationName());
+            }
+            else
+            {
+                CrossFade("Ko");
+                animator.SetBool("Ko", true);
+                enabled = false;
+            }
 
             onHit.Invoke();
+        }
+
+        public void Revive()
+        {
+            enabled = true;
+            animator.Play("Revive");
+            animator.SetBool("Ko", false);
+            ForceAllowAll();
         }
 
         public void DisallowAll()
@@ -252,6 +274,11 @@ namespace LudumDare51.Fencer
         public bool IsCurrentAnimationHit()
         {
             return IsCurrentAnimation(FencerStance.Thrust.HitAnimationName());
+        }
+
+        public bool IsKo()
+        {
+            return animator.GetBool("Ko");
         }
     }
 }

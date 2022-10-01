@@ -8,40 +8,22 @@ using UnityEngine.Events;
 
 namespace LudumDare51.Fencer
 {
-    [DisallowMultipleComponent]
-    public class FencerAttributes : MonoBehaviour
+    [Serializable]
+    public class FencerAttributes
     {
         #region Inspector
 
         public ObservableProperty<int> maxHealthPoints = new ObservableProperty<int>(2);
 
-        public FencerController controller;
-
         [RuntimeHeader]
 
         public ObservableProperty<int> healthPoints = new ObservableProperty<int>();
 
-        private void Reset()
-        {
-            controller = GetComponent<FencerController>();
-        }
-
         #endregion
 
-        private void Start()
-        {
-            ResetAttributes();
-            controller.onHit.AddListener(OnHit);
-        }
-
-        public void ResetAttributes()
+        public void Reset()
         {
             healthPoints.Value = maxHealthPoints.Value;
-        }
-
-        private void OnHit()
-        {
-            healthPoints.Value--;
         }
     }
 }

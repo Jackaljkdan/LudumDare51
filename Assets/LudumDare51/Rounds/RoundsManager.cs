@@ -34,16 +34,16 @@ namespace LudumDare51.Rounds
         public ObservableProperty<int> aiWins = new ObservableProperty<int>();
 
         [Injected]
-        public FencerAttributes playerAttributes;
-        public FencerAttributes aiAttributes;
+        public FencerController player;
+        public FencerController ai;
 
         #endregion
 
         private void Awake()
         {
             Context context = Context.Find(this);
-            playerAttributes = context.Get<FencerAttributes>(this, "player");
-            aiAttributes = context.Get<FencerAttributes>(this, "ai");
+            player = context.Get<FencerController>(this, "player");
+            ai = context.Get<FencerController>(this, "ai");
         }
 
         private void Start()
@@ -51,15 +51,15 @@ namespace LudumDare51.Rounds
             round.SetSilently(0);
             StartNextRound();
 
-            playerAttributes.healthPoints.onChange.AddListener(OnHealthChanged);
-            aiAttributes.healthPoints.onChange.AddListener(OnHealthChanged);
+            player.attributes.healthPoints.onChange.AddListener(OnHealthChanged);
+            ai.attributes.healthPoints.onChange.AddListener(OnHealthChanged);
         }
 
         private void OnHealthChanged(ObservableProperty<int>.Changed arg)
         {
             if (arg.updated == 0)
             {
-                if (playerAttributes.healthPoints.Value > aiAttributes.healthPoints.Value)
+                if (player.attributes.healthPoints.Value > ai.attributes.healthPoints.Value)
                     playerWins.Value++;
                 else
                     aiWins.Value++;
@@ -71,8 +71,13 @@ namespace LudumDare51.Rounds
 
         private void StartNextRound()
         {
-            playerAttributes.ResetAttributes();
-            aiAttributes.ResetAttributes();
+            player.attributes.Reset();
+            ai.attributes.Reset();
+
+            if (player.IsKo())
+                player.Revive();
+            else if (ai.IsKo())
+                ai.Revive();
 
             round.Value++;
 
