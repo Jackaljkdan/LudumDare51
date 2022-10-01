@@ -51,6 +51,7 @@ namespace LudumDare51.Fencer
         private void Start()
         {
             state = FencerAiState.Idle;
+            controller.onHit.AddListener(OnHit);
         }
 
         private void Update()
@@ -136,7 +137,7 @@ namespace LudumDare51.Fencer
 
         private void ParryWaitingUpdate()
         {
-            if (!player.isAttacking)
+            if (!player.isAttacking || player.wasAttackActive)
             {
                 EnterIdle();
                 IdleUpdate();
@@ -164,6 +165,11 @@ namespace LudumDare51.Fencer
                 EnterAttacking();
             else
                 EnterIdle();
+        }
+
+        private void OnHit()
+        {
+            controller.bufferedCommand = FencerCommand.None;
         }
     }
 }

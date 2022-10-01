@@ -22,6 +22,7 @@ namespace LudumDare51.Fencer
         public float reboundBlendSeconds = 0.1f;
 
         public UnityEvent onAttack = new UnityEvent();
+        public UnityEvent onHit = new UnityEvent();
 
         [RuntimeHeader]
 
@@ -124,6 +125,8 @@ namespace LudumDare51.Fencer
             DisallowAll();
             ResetStatus();
             CrossFade(byStance.HitAnimationName());
+
+            onHit.Invoke();
         }
 
         public void DisallowAll()
