@@ -24,6 +24,7 @@ namespace LudumDare51.Fencer
 
         public bool isAttacking;
         public bool isAttackActive;
+        public bool wasAttackActive;
 
         public bool isParryActive;
 
@@ -68,6 +69,7 @@ namespace LudumDare51.Fencer
 
             DisallowAll();
             SetAttackBlend(0);
+            isAttacking = true;
 
             if (IsCurrentAnimation(stance.ParryAnimationName()))
                 CrossFade(stance.AttackAnimationName(), transitionSeconds: 0.2f, offsetSeconds: parryToAttackOffsetSeconds);
@@ -97,7 +99,10 @@ namespace LudumDare51.Fencer
         public void AllowAll()
         {
             if (!IsInTransition() || IsNextAnimation("Idle"))
+            {
                 ForceAllowAll();
+                ResetStatus();
+            }
         }
 
         public void ForceAllowAll()
@@ -110,6 +115,7 @@ namespace LudumDare51.Fencer
         {
             isAttacking = false;
             isAttackActive = false;
+            wasAttackActive = false;
             isParryActive = false;
         }
 
@@ -128,12 +134,16 @@ namespace LudumDare51.Fencer
         public void ActivateAttack()
         {
             if (!IsInTransition() || IsNextAnimation(stance.AttackAnimationName()))
+            {
                 isAttackActive = true;
+                wasAttackActive = false;
+            }
         }
 
         public void DeactivateAttack()
         {
             isAttackActive = false;
+            wasAttackActive = true;
         }
 
         public void ActivateParry()
@@ -158,6 +168,11 @@ namespace LudumDare51.Fencer
         public void CrossFade(string name, float transitionSeconds = 0.1f, float offsetSeconds = 0, int layer = 0)
         {
             animator.CrossFadeInFixedTime(name, transitionSeconds, layer, offsetSeconds);
+        }
+
+        public float GetCurrentAnimationNormalizedTime()
+        {
+            return animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
         }
 
         public bool IsInTransition()
