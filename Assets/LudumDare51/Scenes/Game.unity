@@ -154,13 +154,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   installersParent: {fileID: 1475058549}
   context:
-    rid: 4814920881509236738
+    rid: 4814920882964922371
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
-    - rid: 4814920881509236738
+    - rid: 4814920882964922371
       type: {class: Context, ns: JK.Injection, asm: Assembly-CSharp}
       data:
         name: RootContext
@@ -433,6 +433,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FencerAi
       objectReference: {fileID: 0}
+    - target: {fileID: 624220349163322934, guid: b88e864abbe475a479931a0b82753c6a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 624220349163322935, guid: b88e864abbe475a479931a0b82753c6a,
         type: 3}
       propertyPath: m_RootOrder
@@ -451,7 +456,7 @@ PrefabInstance:
     - target: {fileID: 624220349163322935, guid: b88e864abbe475a479931a0b82753c6a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 624220349163322935, guid: b88e864abbe475a479931a0b82753c6a,
         type: 3}
@@ -527,9 +532,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 496426575}
+  parryDelay: 0.15
   averageAttacksPerSecond: 2
-  delta: 0.5
-  parryDelay: 0.2
+  deltaAttacksPerSeconds: 0.5
+  parryProbability: 1
+  counterProbability: 1
   nextAttackTime: 0
   state: 0
   player: {fileID: 1930817101}

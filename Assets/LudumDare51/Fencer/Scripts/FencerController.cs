@@ -16,6 +16,7 @@ namespace LudumDare51.Fencer
         public Animator animator;
 
         public float parryToAttackOffsetSeconds = 0.2f;
+        public float hitToAnyOffsetSeconds = 0.2f;
         public float reboundToParryOffsetSeconds = 0.1f;
 
         public float reboundBlendSeconds = 0.1f;
@@ -77,7 +78,9 @@ namespace LudumDare51.Fencer
             isAttacking = true;
 
             if (IsCurrentAnimation(stance.ParryAnimationName()))
-                CrossFade(stance.AttackAnimationName(), transitionSeconds: 0.2f, offsetSeconds: parryToAttackOffsetSeconds);
+                CrossFade(stance.AttackAnimationName(), transitionSeconds: 0.2f, parryToAttackOffsetSeconds);
+            else if (IsCurrentAnimationHit())
+                CrossFade(stance.AttackAnimationName(), transitionSeconds: 0.2f, hitToAnyOffsetSeconds);
             else
                 CrossFade(stance.AttackAnimationName());
 
@@ -94,10 +97,19 @@ namespace LudumDare51.Fencer
 
             DisallowAll();
 
-            if (GetAttackBlend() > 0)
+            if (IsCurrentAnimation(stance.AttackAnimationName()) && GetAttackBlend() > 0)
+            {
+                isParryActive = true;
                 CrossFade(stance.ParryAnimationName(), transitionSeconds: 0.2f, reboundToParryOffsetSeconds);
+            }
+            else if (IsCurrentAnimationHit())
+            {
+                CrossFade(stance.ParryAnimationName(), transitionSeconds: 0.2f, hitToAnyOffsetSeconds);
+            }
             else
+            {
                 CrossFade(stance.ParryAnimationName());
+            }
         }
 
         public void Rebound()
@@ -223,6 +235,11 @@ namespace LudumDare51.Fencer
         public bool IsCurrentOrNextAnimation(string name)
         {
             return IsCurrentAnimation(name) || IsNextAnimation(name);
+        }
+
+        public bool IsCurrentAnimationHit()
+        {
+            return IsCurrentAnimation(FencerStance.Thrust.HitAnimationName());
         }
     }
 }
