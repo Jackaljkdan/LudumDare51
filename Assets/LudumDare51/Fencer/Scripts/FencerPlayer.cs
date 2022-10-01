@@ -20,6 +20,12 @@ namespace LudumDare51.Fencer
 
         #endregion
 
+        private void Start()
+        {
+            if (Application.isMobilePlatform)
+                Destroy(this);
+        }
+
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))

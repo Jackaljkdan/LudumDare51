@@ -15,7 +15,7 @@ namespace LudumDare51.Rounds
 
         public Behaviour target;
 
-        [Injected]
+        //[Injected]
         public RoundsManager roundsManager;
 
         #endregion

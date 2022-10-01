@@ -151,10 +151,11 @@ namespace LudumDare51.Fencer
 
         public void Revive()
         {
-            enabled = true;
             animator.Play("Revive");
             animator.SetBool("Ko", false);
             ForceAllowAll();
+            bufferedCommand = FencerCommand.None;
+            enabled = true;
         }
 
         public void DisallowAll()
