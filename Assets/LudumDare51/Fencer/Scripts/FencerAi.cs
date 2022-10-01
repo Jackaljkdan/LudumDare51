@@ -19,9 +19,10 @@ namespace LudumDare51.Fencer
         public FencerController controller;
 
         public float parryDelay = 0.2f;
+        public float hitParryDelay = 0.3f;
 
-        public float averageAttacksPerSecond = 2f;
-        public float deltaAttacksPerSeconds = 0.5f;
+        public float averageSecondsBetweenAttacks = 2f;
+        public float deltaSecondsBetweenAttacks = 0.5f;
 
         public float parryProbability = 0.5f;
         public float counterProbability = 0.5f;
@@ -74,6 +75,9 @@ namespace LudumDare51.Fencer
                 case FencerAiState.Parrying:
                     ParryingUpdate();
                     break;
+                case FencerAiState.Hit:
+                    HitUpdate();
+                    break;
             }
         }
 
@@ -103,7 +107,7 @@ namespace LudumDare51.Fencer
         private void IdleNoParryUpdate()
         {
             if (nextAttackTime == 0)
-                nextAttackTime = Time.time + RandomUtils.TimeUntilNextEvent(averageAttacksPerSecond, deltaAttacksPerSeconds);
+                nextAttackTime = Time.time + RandomUtils.TimeUntilNextEvent(averageSecondsBetweenAttacks, deltaSecondsBetweenAttacks);
 
             if (Time.time >= nextAttackTime)
             {
@@ -144,9 +148,23 @@ namespace LudumDare51.Fencer
                 return;
             }
 
-            if (player.IsCurrentAnimation(player.stance.AttackAnimationName())
-                && player.GetCurrentAnimationNormalizedTime() >= parryDelay
-            )
+            float normalizedTime;
+
+            bool isNext = player.IsNextAnimation(player.stance.AttackAnimationName());
+
+            if (isNext)
+                normalizedTime = player.GetNextAnimatorNormalizedTime();
+            else
+                normalizedTime = player.GetCurrentAnimationNormalizedTime();
+
+            float relevantParryDelay;
+
+            if (controller.IsCurrentAnimationHit())
+                relevantParryDelay = hitParryDelay;
+            else
+                relevantParryDelay = parryDelay;
+
+            if (normalizedTime >= relevantParryDelay)
                 EnterParrying();
         }
 
@@ -167,9 +185,24 @@ namespace LudumDare51.Fencer
                 EnterIdle();
         }
 
+        private void EnterHit()
+        {
+            state = FencerAiState.Hit;
+        }
+
+        private void HitUpdate()
+        {
+            if (controller.canAttack || controller.canParry)
+            {
+                EnterIdle();
+                IdleUpdate();
+            }
+        }
+
         private void OnHit()
         {
             controller.bufferedCommand = FencerCommand.None;
+            EnterHit();
         }
     }
 }

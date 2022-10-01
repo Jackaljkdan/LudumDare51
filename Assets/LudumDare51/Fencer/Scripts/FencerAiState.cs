@@ -14,5 +14,6 @@ namespace LudumDare51.Fencer
         Attacking,
         ParryWaiting,
         Parrying,
+        Hit,
     }
 }

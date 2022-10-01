@@ -51,6 +51,8 @@ namespace LudumDare51.Sword
             else
                 victim.GetHit(wielder.stance);
 
+            wielder.ResetStatus();
+
             alreadyHit = true;
         }
     }
