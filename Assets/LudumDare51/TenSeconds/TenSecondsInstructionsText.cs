@@ -2,6 +2,7 @@ using DG.Tweening;
 using JK.Injection;
 using JK.Injection.PropertyDrawers;
 using JK.Observables;
+using LudumDare51.Rounds;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,6 +21,9 @@ namespace LudumDare51.TenSeconds
         [Injected]
         public TenSecondsManager tenSecondsManager;
 
+        [Injected]
+        public RoundsManager roundsManager;
+
         #endregion
 
         private Tween tween;
@@ -28,12 +32,19 @@ namespace LudumDare51.TenSeconds
         {
             Context context = Context.Find(this);
             tenSecondsManager = context.Get<TenSecondsManager>(this);
+            roundsManager = context.Get<RoundsManager>(this);
         }
 
         private void Start()
         {
             tenSecondsManager.seconds.onChange.AddListener(OnSecondsChanged);
+            roundsManager.onWinOrLose.AddListener(OnWinOrLose);
             GetComponent<Text>().text = string.Empty;
+        }
+
+        private void OnWinOrLose()
+        {
+            GetComponent<Text>().DOFade(0, 0.25f);
         }
 
         private void OnSecondsChanged(ObservableProperty<int>.Changed arg)

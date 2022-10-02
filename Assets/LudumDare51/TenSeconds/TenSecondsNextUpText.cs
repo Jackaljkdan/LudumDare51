@@ -1,7 +1,9 @@
+using DG.Tweening;
 using JK.Attributes;
 using JK.Injection;
 using JK.Injection.PropertyDrawers;
 using JK.Observables;
+using LudumDare51.Rounds;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,12 +22,16 @@ namespace LudumDare51.TenSeconds
         [Injected]
         public TenSecondsManager tenSecondsManager;
 
+        [Injected]
+        public RoundsManager roundsManager;
+
         #endregion
 
         private void Awake()
         {
             Context context = Context.Find(this);
             tenSecondsManager = context.Get<TenSecondsManager>(this);
+            roundsManager = context.Get<RoundsManager>(this);
         }
 
         private void Start()
@@ -33,6 +39,7 @@ namespace LudumDare51.TenSeconds
             Refresh();
             tenSecondsManager.nextDistraction.onChange.AddListener(OnNextDistractionChanged);
             tenSecondsManager.seconds.onChange.AddListener(OnSecondsChanged);
+            roundsManager.onWinOrLose.AddListener(OnWinOrLose);
         }
 
         private void OnNextDistractionChanged(ObservableProperty<TenSecondsEffect>.Changed arg)
@@ -44,6 +51,11 @@ namespace LudumDare51.TenSeconds
         {
             if (arg.updated == 0)
                 GetComponent<Text>().text = string.Empty;
+        }
+
+        private void OnWinOrLose()
+        {
+            GetComponent<Text>().DOFade(0, 0.25f);
         }
 
         private void Refresh()

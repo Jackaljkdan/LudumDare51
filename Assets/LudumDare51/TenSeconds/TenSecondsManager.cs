@@ -42,6 +42,7 @@ namespace LudumDare51.TenSeconds
         {
             roundsManager.onFight.AddListener(OnFight);
             roundsManager.onRoundEnd.AddListener(OnRoundEnd);
+            roundsManager.onWinOrLose.AddListener(OnWinOrLose);
             Setup();
         }
 
@@ -53,6 +54,14 @@ namespace LudumDare51.TenSeconds
         private void OnRoundEnd()
         {
             Stop();
+        }
+
+        private void OnWinOrLose()
+        {
+            Stop();
+
+            if (currentDistraction.Value != null)
+                currentDistraction.Value.Revert();
         }
 
         public void Restart()
