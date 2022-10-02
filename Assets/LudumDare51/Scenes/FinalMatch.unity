@@ -598,7 +598,7 @@ PrefabInstance:
     - target: {fileID: 3792277918178260185, guid: 05a0c32cfbe008e44a0534c3f75401bc,
         type: 3}
       propertyPath: bestOf
-      value: 7
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 3792277918178260185, guid: 05a0c32cfbe008e44a0534c3f75401bc,
         type: 3}
