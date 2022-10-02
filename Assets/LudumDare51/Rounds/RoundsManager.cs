@@ -57,7 +57,7 @@ namespace LudumDare51.Rounds
 
         private void OnHealthChanged(ObservableProperty<int>.Changed arg)
         {
-            if (arg.updated == 0)
+            if (arg.updated <= 0)
             {
                 if (player.attributes.healthPoints.Value > ai.attributes.healthPoints.Value)
                     playerWins.Value++;

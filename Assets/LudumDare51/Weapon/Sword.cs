@@ -7,12 +7,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace LudumDare51.Sword
+namespace LudumDare51.Weapon
 {
     [DisallowMultipleComponent]
     public class Sword : MonoBehaviour
     {
         #region Inspector
+
+        public int damage = 1;
 
         [RuntimeHeader]
 
@@ -49,7 +51,7 @@ namespace LudumDare51.Sword
             if (victim.isParryActive)
                 wielder.Rebound();
             else
-                victim.GetHit(wielder.stance);
+                victim.GetHit(wielder.stance, damage);
 
             wielder.ResetStatus();
 

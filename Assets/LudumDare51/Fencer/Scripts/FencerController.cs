@@ -130,11 +130,11 @@ namespace LudumDare51.Fencer
             onRebound.Invoke();
         }
 
-        public void GetHit(FencerStance byStance)
+        public void GetHit(FencerStance byStance, int damage)
         {
             DisallowAll();
             ResetStatus();
-            attributes.healthPoints.Value--;
+            attributes.healthPoints.Value -= damage;
 
             if (attributes.healthPoints.Value > 0)
             {
