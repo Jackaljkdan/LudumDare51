@@ -36,7 +36,7 @@ namespace LudumDare51.Rounds
 
         private void OnRoundChanged(ObservableProperty<int>.Changed arg)
         {
-            GetComponent<Text>().text = $"Round {arg.updated}";
+            GetComponent<Text>().text = $"Round {arg.updated}/{roundsManager.bestOf}";
 
             var seq = DOTween.Sequence();
             seq.Append(transform.DOScale(1.5f, 0.5f));
