@@ -1365,7 +1365,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   group: {fileID: 510225680}
-  nextScene: Test
+  nextScene: End
   roundsManager: {fileID: 2035494182}
 --- !u!1 &643957974
 GameObject:
