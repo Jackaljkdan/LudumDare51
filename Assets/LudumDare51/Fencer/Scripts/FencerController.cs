@@ -40,6 +40,8 @@ namespace LudumDare51.Fencer
 
         public bool isParryActive;
 
+        public bool isFocusActive;
+
         public FencerCommand bufferedCommand;
 
         public FencerStance stance;
@@ -67,6 +69,9 @@ namespace LudumDare51.Fencer
                     break;
                 case FencerCommand.Parry:
                     Parry();
+                    break;
+                case FencerCommand.EnterFocus:
+                    EnterFocus();
                     break;
             }
         }
@@ -121,6 +126,29 @@ namespace LudumDare51.Fencer
             }
         }
 
+        public void EnterFocus()
+        {
+            if (!canParry)
+            {
+                bufferedCommand = FencerCommand.EnterFocus;
+                return;
+            }
+
+            isFocusActive = true;
+            animator.SetBool("CanIdle", false);
+            CrossFade("Focus", transitionSeconds: 0.2f);
+        }
+
+        public void ExitFocus()
+        {
+            if (!isFocusActive)
+                return;
+
+            isFocusActive = false;
+            animator.SetBool("CanIdle", true);
+            CrossFade("Idle", transitionSeconds: 0.2f);
+        }
+
         public void Rebound()
         {
             ResetStatus();
@@ -134,16 +162,18 @@ namespace LudumDare51.Fencer
         {
             DisallowAll();
             ResetStatus();
+
             attributes.healthPoints.Value = Mathf.Min(attributes.healthPoints.Value - damage, attributes.maxHealthPoints.Value);
 
             if (attributes.healthPoints.Value > 0)
             {
+                animator.SetBool("CanIdle", true);
                 CrossFade(byStance.HitAnimationName());
             }
             else
             {
                 CrossFade("Ko");
-                animator.SetBool("Ko", true);
+                animator.SetBool("CanIdle", false);
                 enabled = false;
             }
 
@@ -153,7 +183,7 @@ namespace LudumDare51.Fencer
         public void Revive()
         {
             animator.Play("Revive");
-            animator.SetBool("Ko", false);
+            animator.SetBool("CanIdle", true);
             ForceAllowAll();
             bufferedCommand = FencerCommand.None;
             enabled = true;
@@ -185,6 +215,7 @@ namespace LudumDare51.Fencer
             isAttackActive = false;
             wasAttackActive = false;
             isParryActive = false;
+            isFocusActive = false;
         }
 
         public void AllowAttack()
@@ -276,11 +307,6 @@ namespace LudumDare51.Fencer
         public bool IsCurrentAnimationHit()
         {
             return IsCurrentAnimation(FencerStance.Thrust.HitAnimationName());
-        }
-
-        public bool IsKo()
-        {
-            return animator.GetBool("Ko");
         }
     }
 }

@@ -12,5 +12,6 @@ namespace LudumDare51.Fencer
         None,
         Attack,
         Parry,
+        EnterFocus,
     }
 }

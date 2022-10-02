@@ -18,6 +18,8 @@ namespace LudumDare51.Rounds
     {
         #region Inspector
 
+        public int bestOf = 3;
+
         public float nextRoundDelaySeconds = 5f;
 
         public float fightDelaySeconds = 3;
@@ -25,6 +27,8 @@ namespace LudumDare51.Rounds
         public UnityEvent onFight = new UnityEvent();
 
         public UnityEvent onRoundEnd = new UnityEvent();
+
+        public UnityEvent onWinOrLose = new UnityEvent();
 
         [RuntimeHeader]
 
@@ -59,25 +63,47 @@ namespace LudumDare51.Rounds
         {
             if (arg.updated <= 0)
             {
+                bool someoneWon = false;
+
                 if (player.attributes.healthPoints.Value > ai.attributes.healthPoints.Value)
+                {
                     playerWins.Value++;
+
+                    if (playerWins.Value > bestOf / 2)
+                    {
+                        someoneWon = true;
+                        player.EnterFocus();
+                    }
+                }
                 else
+                {
                     aiWins.Value++;
 
-                Invoke(nameof(StartNextRound), nextRoundDelaySeconds);
+                    if (aiWins.Value > bestOf / 2)
+                    {
+                        someoneWon = true;
+                        ai.EnterFocus();
+                    }
+                }
+
                 onRoundEnd.Invoke();
+
+                if (someoneWon)
+                    onWinOrLose.Invoke();
+                else
+                    Invoke(nameof(StartNextRound), nextRoundDelaySeconds);
             }
         }
 
         private void StartNextRound()
         {
+            if (player.attributes.healthPoints.Value <= 0)
+                player.Revive();
+            else if (ai.attributes.healthPoints.Value <= 0)
+                ai.Revive();
+
             player.attributes.Reset();
             ai.attributes.Reset();
-
-            if (player.IsKo())
-                player.Revive();
-            else if (ai.IsKo())
-                ai.Revive();
 
             round.Value++;
 

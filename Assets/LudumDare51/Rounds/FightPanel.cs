@@ -7,6 +7,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace LudumDare51.Rounds
 {
@@ -17,8 +18,16 @@ namespace LudumDare51.Rounds
 
         public CanvasGroup group;
 
+        public Text text;
+
         [Injected]
         public RoundsManager roundsManager;
+
+        private void Reset()
+        {
+            group = GetComponent<CanvasGroup>();
+            text = GetComponentInChildren<Text>();
+        }
 
         #endregion
 
@@ -31,6 +40,7 @@ namespace LudumDare51.Rounds
         private void Start()
         {
             roundsManager.round.onChange.AddListener(OnRoundChanged);
+            roundsManager.onWinOrLose.AddListener(OnWinOrLose);
             gameObject.SetActive(false);
         }
 
@@ -51,6 +61,23 @@ namespace LudumDare51.Rounds
             {
                 gameObject.SetActive(false);
             };
+        }
+
+        private void OnWinOrLose()
+        {
+            gameObject.SetActive(true);
+
+            group.alpha = 0;
+            Vector3 scale = new Vector3(0.8f, 0.8f, 0.8f);
+            transform.localScale = scale;
+
+            transform.DOScale(1, 0.25f).SetDelay(1);
+            group.DOFade(1, 0.25f).SetDelay(1);
+
+            if (roundsManager.playerWins.Value > roundsManager.aiWins.Value)
+                text.text = "You\nWin!";
+            else
+                text.text = "You\nLose";
         }
     }
 }
