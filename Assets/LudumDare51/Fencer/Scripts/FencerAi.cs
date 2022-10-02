@@ -2,6 +2,7 @@ using JK.Injection;
 using JK.Injection.PropertyDrawers;
 using JK.PropertyDrawers;
 using JK.Utils;
+using LudumDare51.TenSeconds;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace LudumDare51.Fencer
         public float blindParryAfterReboundProbability = 0.5f;
         public float counterProbability = 0.5f;
         public float counterDelayProbability = 0.5f;
+        public float focusProbability = 0f;
 
         [RuntimeHeader]
 
@@ -38,6 +40,9 @@ namespace LudumDare51.Fencer
 
         [Injected]
         public FencerController player;
+
+        [Injected]
+        public TenSecondsManager tenSecondsManager;
 
         private void Reset()
         {
@@ -49,7 +54,8 @@ namespace LudumDare51.Fencer
         private void Awake()
         {
             Context context = Context.Find(this);
-            player = context.Get<FencerController>("player");
+            player = context.Get<FencerController>(this, "player");
+            tenSecondsManager = context.Get<TenSecondsManager>(this);
         }
 
         private void Start()
@@ -65,6 +71,9 @@ namespace LudumDare51.Fencer
             {
                 case FencerAiState.Idle:
                     IdleUpdate();
+                    break;
+                case FencerAiState.IdleNoFocus:
+                    IdleNoFocusUpdate();
                     break;
                 case FencerAiState.IdleNoParry:
                     IdleNoParryUpdate();
@@ -84,6 +93,9 @@ namespace LudumDare51.Fencer
                 case FencerAiState.Hit:
                     HitUpdate();
                     break;
+                case FencerAiState.Focus:
+                    FocusUpdate();
+                    break;
             }
         }
 
@@ -94,6 +106,26 @@ namespace LudumDare51.Fencer
         }
 
         private void IdleUpdate()
+        {
+            if (tenSecondsManager.seconds.Value == 1
+                && (Time.time - tenSecondsManager.secondStartTime) >= 0.5f
+                && tenSecondsManager.nextDistraction.Value != null
+                && tenSecondsManager.nextDistraction.Value.GetInstructions() != null
+            )
+            {
+                if (RandomUtils.Should(focusProbability))
+                {
+                    EnterFocus();
+                    return;
+                }
+
+                state = FencerAiState.IdleNoFocus;
+            }
+
+            IdleNoFocusUpdate();
+        }
+
+        private void IdleNoFocusUpdate()
         {
             if (player.isAttacking && !player.wasAttackActive)
             {
@@ -223,6 +255,27 @@ namespace LudumDare51.Fencer
         {
             if (controller.canAttack || controller.canParry)
             {
+                EnterIdle();
+                IdleUpdate();
+            }
+        }
+
+        private float focusEnterTime;
+
+        private void EnterFocus()
+        {
+            state = FencerAiState.Focus;
+            controller.EnterFocus();
+            focusEnterTime = Time.time;
+        }
+
+        private void FocusUpdate()
+        {
+            controller.EnterFocus();
+
+            if (Time.time >= focusEnterTime + 0.8f)
+            {
+                controller.ExitFocus();
                 EnterIdle();
                 IdleUpdate();
             }

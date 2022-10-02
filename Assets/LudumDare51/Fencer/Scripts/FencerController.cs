@@ -158,6 +158,8 @@ namespace LudumDare51.Fencer
             animator.SetBool("CanIdle", true);
             CrossFade("Idle", transitionSeconds: 0.2f);
 
+            AllowAll();
+
             if (bufferedCommand == FencerCommand.EnterFocus)
                 bufferedCommand = FencerCommand.None;
         }

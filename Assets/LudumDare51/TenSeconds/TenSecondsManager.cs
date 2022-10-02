@@ -21,6 +21,8 @@ namespace LudumDare51.TenSeconds
 
         public ObservableProperty<TenSecondsEffect> nextDistraction = new ObservableProperty<TenSecondsEffect>();
 
+        public float secondStartTime;
+
         [RuntimeHeader]
 
         public ObservableProperty<int> seconds = new ObservableProperty<int>();
@@ -73,6 +75,7 @@ namespace LudumDare51.TenSeconds
         private void Setup()
         {
             seconds.Value = 10;
+            secondStartTime = Time.time;
 
             if (nextDistraction.Value == null)
                 nextDistraction.Value = GetRandomDistraction();
@@ -91,6 +94,7 @@ namespace LudumDare51.TenSeconds
         private void Timer()
         {
             seconds.Value--;
+            secondStartTime = Time.time;
 
             if (seconds.Value == 0)
             {

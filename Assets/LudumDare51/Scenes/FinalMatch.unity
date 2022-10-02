@@ -669,9 +669,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1930817101}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
+      propertyPath: focusProbability
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: parryProbability
       value: 0.98
       objectReference: {fileID: 0}
+    - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
+      propertyPath: tenSecondsManager
+      value: 
+      objectReference: {fileID: 1810989213}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: counterProbability
       value: 0.92
