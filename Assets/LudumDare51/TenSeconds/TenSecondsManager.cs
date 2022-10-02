@@ -73,7 +73,9 @@ namespace LudumDare51.TenSeconds
         private void Setup()
         {
             seconds.Value = 10;
-            nextDistraction.Value = GetRandomDistraction();
+
+            if (nextDistraction.Value == null)
+                nextDistraction.Value = GetRandomDistraction();
         }
 
         public void Resume()
@@ -96,6 +98,7 @@ namespace LudumDare51.TenSeconds
                     currentDistraction.Value.Revert();
 
                 currentDistraction.Value = nextDistraction.Value;
+                nextDistraction.Value = null;
 
                 if (currentDistraction.Value != null)
                 {

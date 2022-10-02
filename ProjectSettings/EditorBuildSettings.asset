@@ -12,6 +12,12 @@ EditorBuildSettings:
     path: Assets/LudumDare51/Scenes/IntroMatch.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
+    path: Assets/LudumDare51/Scenes/ShockwaveMatch.unity
+    guid: 9b3c220094d4fbe4c8ed55db00f516a3
+  - enabled: 1
+    path: Assets/LudumDare51/Scenes/ShockwaveTalk.unity
+    guid: 3dcae52a9050d0f47a506cca507ccb1d
+  - enabled: 1
     path: Assets/LudumDare51/Scenes/End.unity
     guid: 630f8f8df7a3f284c982759a28e00605
   m_configObjects: {}
