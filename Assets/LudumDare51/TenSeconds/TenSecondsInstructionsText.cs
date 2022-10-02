@@ -40,9 +40,14 @@ namespace LudumDare51.TenSeconds
         {
             if (arg.updated == 3 && tenSecondsManager.nextDistraction.Value != null)
             {
-                GetComponent<Text>().text = tenSecondsManager.nextDistraction.Value.GetInstructions();
-                transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
-                tween = transform.DOScale(1.2f, 1).SetLoops(-1);
+                string instructions = tenSecondsManager.nextDistraction.Value.GetInstructions();
+
+                if (!string.IsNullOrEmpty(instructions))
+                {
+                    GetComponent<Text>().text = instructions;
+                    transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+                    tween = transform.DOScale(1.2f, 1).SetLoops(-1);
+                }
             }
             else if (arg.updated == 10)
             {
