@@ -30,6 +30,12 @@ EditorBuildSettings:
     path: Assets/LudumDare51/Scenes/PostDelayTalk.unity
     guid: 251217a4ae7bb8f45b4576cb7d77f470
   - enabled: 1
+    path: Assets/LudumDare51/Scenes/HardMatch.unity
+    guid: 86bd15c64ce6bb841b92ead417ef8f26
+  - enabled: 1
+    path: Assets/LudumDare51/Scenes/HardTalk.unity
+    guid: 6c56e9a187544d540ad325524990485e
+  - enabled: 1
     path: Assets/LudumDare51/Scenes/End.unity
     guid: 630f8f8df7a3f284c982759a28e00605
   m_configObjects: {}

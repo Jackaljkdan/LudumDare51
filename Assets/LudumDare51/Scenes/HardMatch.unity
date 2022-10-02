@@ -597,6 +597,11 @@ PrefabInstance:
       objectReference: {fileID: 496426575}
     - target: {fileID: 3792277918178260185, guid: 05a0c32cfbe008e44a0534c3f75401bc,
         type: 3}
+      propertyPath: bestOf
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792277918178260185, guid: 05a0c32cfbe008e44a0534c3f75401bc,
+        type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1930817101}
@@ -665,27 +670,27 @@ PrefabInstance:
       objectReference: {fileID: 1930817101}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: parryProbability
-      value: 0.95
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: counterProbability
-      value: 0.8
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: counterDelayProbability
-      value: 0.6
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: deltaSecondsBetweenAttacks
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: averageSecondsBetweenAttacks
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: blindParryAfterReboundProbability
-      value: 0.3
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 496426582, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: roundsManager
@@ -695,7 +700,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 3d775176d40ed574394749eafda241c1, type: 2}
+      objectReference: {fileID: 2100000, guid: 33881ec11b375f64b9039351ef547431, type: 2}
     - target: {fileID: 5229031742542989540, guid: a0036cd5dcccb334ea0033a2ccaa41f1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1154,11 +1159,6 @@ PrefabInstance:
       propertyPath: tenSecondsManager
       value: 
       objectReference: {fileID: 1810989213}
-    - target: {fileID: 6659867292988328137, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
-        type: 3}
-      propertyPath: nextScene
-      value: HardTalk
-      objectReference: {fileID: 0}
     - target: {fileID: 6659867292988328137, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
         type: 3}
       propertyPath: roundsManager
