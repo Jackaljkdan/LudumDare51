@@ -16,6 +16,9 @@ namespace LudumDare51.Weapon
 
         public int damage = 1;
 
+        public List<AudioClip> parryClips;
+        public List<AudioClip> hitClips;
+
         [RuntimeHeader]
 
         [ReadOnly]
@@ -49,9 +52,19 @@ namespace LudumDare51.Weapon
                 return;
 
             if (victim.isParryActive)
+            {
                 wielder.Rebound();
+
+                if (TryGetComponent(out AudioSource source))
+                    source.PlayRandomClip(parryClips, oneShot: true);
+            }
             else
+            {
                 victim.GetHit(wielder.stance, damage);
+
+                if (TryGetComponent(out AudioSource source))
+                    source.PlayRandomClip(hitClips, oneShot: true);
+            }
 
             wielder.ResetStatus();
 
