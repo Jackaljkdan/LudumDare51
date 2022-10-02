@@ -22,11 +22,7 @@ namespace JK.Injection
 
         private static List<Installer> list = new List<Installer>(16);
 
-#if UNITY_EDITOR
-        [SerializeReference]
-#else
         [NonSerialized]
-#endif
         public Context context;
 
         private void Awake()
