@@ -139,7 +139,14 @@ namespace LudumDare51.Fencer
 
             isFocusActive = true;
             animator.SetBool("CanIdle", false);
-            CrossFade("Focus", transitionSeconds: 0.2f);
+            CrossFade("Focus", transitionSeconds: 0.4f);
+        }
+
+        public void ForceFocus()
+        {
+            ForceAllowAll();
+            EnterFocus();
+            DisallowAll();
         }
 
         public void ExitFocus()
@@ -150,6 +157,9 @@ namespace LudumDare51.Fencer
             isFocusActive = false;
             animator.SetBool("CanIdle", true);
             CrossFade("Idle", transitionSeconds: 0.2f);
+
+            if (bufferedCommand == FencerCommand.EnterFocus)
+                bufferedCommand = FencerCommand.None;
         }
 
         public void Rebound()

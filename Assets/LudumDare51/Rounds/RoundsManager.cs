@@ -63,6 +63,8 @@ namespace LudumDare51.Rounds
         {
             if (arg.updated <= 0)
             {
+                onRoundEnd.Invoke();
+
                 bool someoneWon = false;
 
                 if (player.attributes.healthPoints.Value > ai.attributes.healthPoints.Value)
@@ -72,7 +74,7 @@ namespace LudumDare51.Rounds
                     if (playerWins.Value > bestOf / 2)
                     {
                         someoneWon = true;
-                        player.EnterFocus();
+                        player.ForceFocus();
                     }
                 }
                 else
@@ -82,11 +84,9 @@ namespace LudumDare51.Rounds
                     if (aiWins.Value > bestOf / 2)
                     {
                         someoneWon = true;
-                        ai.EnterFocus();
+                        ai.ForceFocus();
                     }
                 }
-
-                onRoundEnd.Invoke();
 
                 if (someoneWon)
                     onWinOrLose.Invoke();
