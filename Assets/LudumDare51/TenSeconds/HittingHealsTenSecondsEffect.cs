@@ -56,6 +56,12 @@ namespace LudumDare51.TenSeconds
             playerSword.damage = -healAmount;
             aiSword.damage = -healAmount;
 
+            foreach (var cross in playerSword.GetComponentsInChildren<Cross>(includeInactive: true))
+                cross.gameObject.SetActive(true);
+
+            foreach (var cross in aiSword.GetComponentsInChildren<Cross>(includeInactive: true))
+                cross.gameObject.SetActive(true);
+
             doneCallback?.Invoke();
         }
 
@@ -100,6 +106,12 @@ namespace LudumDare51.TenSeconds
 
             playerSword.damage = normalPlayerDamage;
             aiSword.damage = normalAiDamage;
+
+            foreach (var cross in playerSword.GetComponentsInChildren<Cross>())
+                cross.gameObject.SetActive(false);
+
+            foreach (var cross in aiSword.GetComponentsInChildren<Cross>())
+                cross.gameObject.SetActive(false);
         }
     }
 }
