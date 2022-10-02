@@ -134,7 +134,7 @@ namespace LudumDare51.Fencer
         {
             DisallowAll();
             ResetStatus();
-            attributes.healthPoints.Value -= damage;
+            attributes.healthPoints.Value = Mathf.Min(attributes.healthPoints.Value - damage, attributes.maxHealthPoints.Value);
 
             if (attributes.healthPoints.Value > 0)
             {
