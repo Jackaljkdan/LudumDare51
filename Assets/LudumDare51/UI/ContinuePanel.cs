@@ -45,11 +45,13 @@ namespace LudumDare51.UI
         private void OnWinOrLose()
         {
             gameObject.SetActive(true);
+            enabled = false;
+
             group.alpha = 0;
             transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
 
             group.DOFade(1, 0.25f).SetDelay(2);
-            transform.DOScale(1, 0.25f).SetDelay(2);
+            transform.DOScale(1, 0.25f).SetDelay(2).onComplete += () => enabled = true;
         }
 
         private void Update()
