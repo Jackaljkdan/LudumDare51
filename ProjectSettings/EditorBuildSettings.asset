@@ -24,6 +24,12 @@ EditorBuildSettings:
     path: Assets/LudumDare51/Scenes/DelayTalk.unity
     guid: a409200ebb3480b43be890c4d16aad8b
   - enabled: 1
+    path: Assets/LudumDare51/Scenes/PostDelayMatch.unity
+    guid: 4165496d9a76e1c44a438e21cbe0806a
+  - enabled: 1
+    path: Assets/LudumDare51/Scenes/PostDelayTalk.unity
+    guid: 251217a4ae7bb8f45b4576cb7d77f470
+  - enabled: 1
     path: Assets/LudumDare51/Scenes/End.unity
     guid: 630f8f8df7a3f284c982759a28e00605
   m_configObjects: {}
