@@ -71,41 +71,51 @@ namespace LudumDare51.Rounds
             ai.attributes.healthPoints.onChange.AddListener(OnHealthChanged);
         }
 
+        private Coroutine healthChangedCoroutine;
+
         private void OnHealthChanged(ObservableProperty<int>.Changed arg)
         {
-            if (arg.updated <= 0)
+            if (healthChangedCoroutine == null)
+                healthChangedCoroutine = this.RunAtEndOfFrame(checkEnd);
+
+            void checkEnd()
             {
-                onRoundEnd.Invoke();
+                healthChangedCoroutine = null;
 
-                bool someoneWon = false;
-
-                if (player.attributes.healthPoints.Value > ai.attributes.healthPoints.Value)
+                if (player.attributes.healthPoints.Value <= 0 || ai.attributes.healthPoints.Value <= 0)
                 {
-                    playerWins.Value++;
+                    onRoundEnd.Invoke();
 
-                    if (playerWins.Value > bestOf / 2)
+                    bool someoneWon = false;
+
+                    if (player.attributes.healthPoints.Value > ai.attributes.healthPoints.Value && player.attributes.healthPoints.Value > 0)
                     {
-                        someoneWon = true;
-                        player.ForceFocus();
-                        this.RunAfterSeconds(1, () => voiceAudioSource.PlayOneShotSafely(winClip));
-                    }
-                }
-                else
-                {
-                    aiWins.Value++;
+                        playerWins.Value++;
 
-                    if (aiWins.Value > bestOf / 2)
+                        if (playerWins.Value > bestOf / 2)
+                        {
+                            someoneWon = true;
+                            player.ForceFocus();
+                            this.RunAfterSeconds(1, () => voiceAudioSource.PlayOneShotSafely(winClip));
+                        }
+                    }
+                    else if (ai.attributes.healthPoints.Value > player.attributes.healthPoints.Value && ai.attributes.healthPoints.Value > 0)
                     {
-                        someoneWon = true;
-                        ai.ForceFocus();
-                        this.RunAfterSeconds(1, () => voiceAudioSource.PlayOneShotSafely(loseClip));
-                    }
-                }
+                        aiWins.Value++;
 
-                if (someoneWon)
-                    onWinOrLose.Invoke();
-                else
-                    Invoke(nameof(StartNextRound), nextRoundDelaySeconds);
+                        if (aiWins.Value > bestOf / 2)
+                        {
+                            someoneWon = true;
+                            ai.ForceFocus();
+                            this.RunAfterSeconds(1, () => voiceAudioSource.PlayOneShotSafely(loseClip));
+                        }
+                    }
+
+                    if (someoneWon)
+                        onWinOrLose.Invoke();
+                    else
+                        Invoke(nameof(StartNextRound), nextRoundDelaySeconds);
+                }
             }
         }
 
@@ -113,7 +123,7 @@ namespace LudumDare51.Rounds
         {
             if (player.attributes.healthPoints.Value <= 0)
                 player.Revive();
-            else if (ai.attributes.healthPoints.Value <= 0)
+            if (ai.attributes.healthPoints.Value <= 0)
                 ai.Revive();
 
             player.attributes.Reset();
