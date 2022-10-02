@@ -20,6 +20,8 @@ namespace LudumDare51.Rounds
 
         public int bestOf = 3;
 
+        public List<AudioClip> roundClips;
+
         public float nextRoundDelaySeconds = 5f;
 
         public float fightDelaySeconds = 3;
@@ -41,6 +43,9 @@ namespace LudumDare51.Rounds
         public FencerController player;
         public FencerController ai;
 
+        [Injected]
+        public AudioSource voiceAudioSource;
+
         #endregion
 
         private void Awake()
@@ -48,6 +53,7 @@ namespace LudumDare51.Rounds
             Context context = Context.Find(this);
             player = context.Get<FencerController>(this, "player");
             ai = context.Get<FencerController>(this, "ai");
+            voiceAudioSource = context.Get<AudioSource>(this, "voice");
         }
 
         private void Start()
@@ -104,6 +110,8 @@ namespace LudumDare51.Rounds
 
             player.attributes.Reset();
             ai.attributes.Reset();
+
+            voiceAudioSource.PlayOneShot(roundClips[round.Value]);
 
             round.Value++;
 
