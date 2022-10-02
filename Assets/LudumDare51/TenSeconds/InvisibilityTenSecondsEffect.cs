@@ -34,7 +34,7 @@ namespace LudumDare51.TenSeconds
             player.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
             ai.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
 
-            doneCallback.Invoke();
+            doneCallback?.Invoke();
         }
 
         public override bool CanApply()

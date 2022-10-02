@@ -57,10 +57,10 @@ namespace LudumDare51.TenSeconds
                 {
                     GetComponent<Text>().text = instructions;
                     transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
-                    tween = transform.DOScale(1.2f, 1).SetLoops(-1);
+                    tween = transform.DOScale(1.05f, 1).SetLoops(-1);
                 }
             }
-            else if (arg.updated == 10)
+            else if (arg.updated == 0)
             {
                 GetComponent<Text>().text = string.Empty;
                 tween?.Kill();

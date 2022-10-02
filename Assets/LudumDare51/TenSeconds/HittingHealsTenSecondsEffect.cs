@@ -56,7 +56,7 @@ namespace LudumDare51.TenSeconds
             playerSword.damage = -healAmount;
             aiSword.damage = -healAmount;
 
-            doneCallback.Invoke();
+            doneCallback?.Invoke();
         }
 
         private void OnPlayerHit()

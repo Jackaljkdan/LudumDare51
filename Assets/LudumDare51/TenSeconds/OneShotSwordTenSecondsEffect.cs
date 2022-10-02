@@ -64,7 +64,7 @@ namespace LudumDare51.TenSeconds
             playerSword.damage = oneShotDamage;
             aiSword.damage = oneShotDamage;
 
-            doneCallback.Invoke();
+            doneCallback?.Invoke();
         }
 
         public override bool CanApply()
