@@ -3,6 +3,7 @@ using JK.Injection;
 using JK.Injection.PropertyDrawers;
 using JK.Observables;
 using JK.PropertyDrawers;
+using JK.Utils;
 using LudumDare51.Fencer;
 using System;
 using System.Collections;
@@ -21,6 +22,9 @@ namespace LudumDare51.Rounds
         public int bestOf = 3;
 
         public List<AudioClip> roundClips;
+
+        public AudioClip winClip;
+        public AudioClip loseClip;
 
         public float nextRoundDelaySeconds = 5f;
 
@@ -81,6 +85,7 @@ namespace LudumDare51.Rounds
                     {
                         someoneWon = true;
                         player.ForceFocus();
+                        this.RunAfterSeconds(1, () => voiceAudioSource.PlayOneShotSafely(winClip));
                     }
                 }
                 else
@@ -91,6 +96,7 @@ namespace LudumDare51.Rounds
                     {
                         someoneWon = true;
                         ai.ForceFocus();
+                        this.RunAfterSeconds(1, () => voiceAudioSource.PlayOneShotSafely(loseClip));
                     }
                 }
 

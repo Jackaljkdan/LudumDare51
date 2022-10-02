@@ -18,5 +18,16 @@ namespace JK.Utils
             yield return new WaitForEndOfFrame();
             action();
         }
+
+        public static Coroutine RunAfterSeconds(this MonoBehaviour self, float seconds, UnityAction action)
+        {
+            return self.StartCoroutine(RunAfterSecondsCoroutine(seconds, action));
+        }
+
+        public static IEnumerator RunAfterSecondsCoroutine(float seconds, UnityAction action)
+        {
+            yield return new WaitForSeconds(seconds);
+            action();
+        }
     }
 }

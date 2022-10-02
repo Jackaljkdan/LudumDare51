@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tenSecondsManager: {fileID: 1810989213}
+  roundsManager: {fileID: 0}
 --- !u!1 &37800222
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,19 +494,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   installersParent: {fileID: 1475058549}
-  context:
-    rid: 4814920902036684807
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
-    - rid: 4814920902036684807
-      type: {class: Context, ns: JK.Injection, asm: Assembly-CSharp}
-      data:
-        name: RootContext
-        container:
-          rid: -2
 --- !u!4 &136258221
 Transform:
   m_ObjectHideFlags: 0
@@ -2468,6 +2456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tenSecondsManager: {fileID: 1810989213}
+  roundsManager: {fileID: 0}
 --- !u!114 &1642885437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3020,6 +3009,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bestOf: 3
+  roundClips:
+  - {fileID: 8300000, guid: 8a80905d726208c4b9a4564ef14e4e52, type: 3}
+  - {fileID: 8300000, guid: 70dc93061820f914fadd8b97681e1918, type: 3}
+  - {fileID: 8300000, guid: 3ab2302e941bcac44bd1ac893a7295ec, type: 3}
+  winClip: {fileID: 8300000, guid: d0c737147f8603941a3be140a085ac6b, type: 3}
+  loseClip: {fileID: 8300000, guid: 9ae56df2d16f2db47954fe3eae4a4e7e, type: 3}
   nextRoundDelaySeconds: 3
   fightDelaySeconds: 3
   onFight:
@@ -3048,6 +3043,8 @@ MonoBehaviour:
         m_Calls: []
   player: {fileID: 1930817101}
   ai: {fileID: 496426575}
+  voiceAudioSource: {fileID: 1512560706852568751, guid: 1941a4a9cde93db4d87f939542448cb2,
+    type: 3}
 --- !u!114 &2035494183
 MonoBehaviour:
   m_ObjectHideFlags: 0
