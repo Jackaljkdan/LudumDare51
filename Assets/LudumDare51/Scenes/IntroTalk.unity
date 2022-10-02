@@ -1598,7 +1598,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Welcome to the tournament! I will be your coach.
+  m_Text: Welcome to the Iron Sword Tournament! I will be your coach.
 --- !u!222 &1521438589
 CanvasRenderer:
   m_ObjectHideFlags: 0

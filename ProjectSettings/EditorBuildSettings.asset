@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/LudumDare51/Scenes/Start.unity
+    guid: df2705de73a1d62479a5aca377a84c3f
+  - enabled: 1
     path: Assets/LudumDare51/Scenes/IntroTalk.unity
     guid: e56baff7d72d11648b13edce0f4c3d93
   - enabled: 1
