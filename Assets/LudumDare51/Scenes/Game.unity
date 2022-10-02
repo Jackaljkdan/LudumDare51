@@ -869,6 +869,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1176487343}
+  - component: {fileID: 1176487344}
   m_Layer: 0
   m_Name: UpsideDown
   m_TagString: Untagged
@@ -891,6 +892,19 @@ Transform:
   m_Father: {fileID: 1810989211}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1176487344
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1176487342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a64c791ca107184ebfd05ad35b21efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  camera: {fileID: 330585545}
 --- !u!224 &1439787519 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6659867291791379495, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
