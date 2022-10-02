@@ -36,7 +36,7 @@ namespace LudumDare51.TenSeconds
 
             var text = GetComponent<Text>();
             standardFontSize = text.fontSize;
-            text.text = string.Empty;
+            text.text = "10";
         }
 
         private void OnSecondsChanged(ObservableProperty<int>.Changed arg)

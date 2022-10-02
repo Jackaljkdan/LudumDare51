@@ -17,7 +17,7 @@ namespace JK.Observables
             get => _value;
             set
             {
-                if (ReferenceEquals(_value, value) || _value.Equals(value))
+                if (ReferenceEquals(_value, value) || (_value != null && _value.Equals(value)))
                     return;
 
                 T old = _value;

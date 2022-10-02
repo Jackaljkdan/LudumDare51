@@ -2,6 +2,7 @@ using JK.Injection;
 using JK.Injection.PropertyDrawers;
 using JK.Observables;
 using JK.PropertyDrawers;
+using JK.Utils;
 using LudumDare51.Rounds;
 using System;
 using System.Collections;
@@ -16,6 +17,10 @@ namespace LudumDare51.TenSeconds
     {
         #region Inspector
 
+        public ObservableProperty<TenSecondsEffect> currentDistraction = new ObservableProperty<TenSecondsEffect>();
+
+        public ObservableProperty<TenSecondsEffect> nextDistraction = new ObservableProperty<TenSecondsEffect>();
+
         [RuntimeHeader]
 
         public ObservableProperty<int> seconds = new ObservableProperty<int>();
@@ -24,6 +29,8 @@ namespace LudumDare51.TenSeconds
         public RoundsManager roundsManager;
 
         #endregion
+
+        private List<TenSecondsEffect> distractions = new List<TenSecondsEffect>(16);
 
         private void Awake()
         {
@@ -35,7 +42,7 @@ namespace LudumDare51.TenSeconds
         {
             roundsManager.onFight.AddListener(OnFight);
             roundsManager.onRoundEnd.AddListener(OnRoundEnd);
-            seconds.Value = 10;
+            Setup();
         }
 
         private void OnFight()
@@ -48,9 +55,26 @@ namespace LudumDare51.TenSeconds
             Stop();
         }
 
+        public void Restart()
+        {
+            Setup();
+            Resume();
+        }
+
+        private void Setup()
+        {
+            seconds.Value = 10;
+            nextDistraction.Value = GetRandomDistraction();
+        }
+
         public void Resume()
         {
             InvokeRepeating(nameof(Timer), 1, 1);
+        }
+
+        public void Stop()
+        {
+            CancelInvoke(nameof(Timer));
         }
 
         private void Timer()
@@ -59,19 +83,44 @@ namespace LudumDare51.TenSeconds
 
             if (seconds.Value == 0)
             {
-                TriggerDistraction();
-                Stop();
+                if (currentDistraction.Value != null)
+                    currentDistraction.Value.Revert();
+
+                currentDistraction.Value = nextDistraction.Value;
+
+                if (currentDistraction.Value != null)
+                {
+                    Stop();
+                    currentDistraction.Value.Apply(Restart);
+                }
+                else
+                {
+                    Restart();
+                }
             }
         }
 
-        private void TriggerDistraction()
+        private TenSecondsEffect GetRandomDistraction()
         {
+            GetComponentsInChildren(distractions);
+            distractions.ShuffleInPlace();
 
-        }
+            foreach (var distraction in distractions)
+            {
+                if (!distraction.gameObject.activeInHierarchy)
+                    continue;
 
-        public void Stop()
-        {
-            CancelInvoke(nameof(Timer));
+                if (!distraction.enabled)
+                    continue;
+
+                if (distraction == currentDistraction.Value)
+                    continue;
+
+                if (distraction.CanApply())
+                    return distraction;
+            }
+
+            return null;
         }
     }
 }
