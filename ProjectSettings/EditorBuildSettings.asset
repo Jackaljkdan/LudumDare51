@@ -18,6 +18,12 @@ EditorBuildSettings:
     path: Assets/LudumDare51/Scenes/ShockwaveTalk.unity
     guid: 3dcae52a9050d0f47a506cca507ccb1d
   - enabled: 1
+    path: Assets/LudumDare51/Scenes/DelayMatch.unity
+    guid: fb5006e1b1e804742ae71e136b65966c
+  - enabled: 1
+    path: Assets/LudumDare51/Scenes/DelayTalk.unity
+    guid: a409200ebb3480b43be890c4d16aad8b
+  - enabled: 1
     path: Assets/LudumDare51/Scenes/End.unity
     guid: 630f8f8df7a3f284c982759a28e00605
   m_configObjects: {}

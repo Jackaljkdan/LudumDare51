@@ -590,11 +590,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Systems
       objectReference: {fileID: 0}
-    - target: {fileID: 3792277917869807970, guid: 05a0c32cfbe008e44a0534c3f75401bc,
-        type: 3}
-      propertyPath: nextDistraction._value
-      value: 
-      objectReference: {fileID: 3792277919406070272}
     - target: {fileID: 3792277918178260185, guid: 05a0c32cfbe008e44a0534c3f75401bc,
         type: 3}
       propertyPath: ai
@@ -657,18 +652,6 @@ PrefabInstance:
       objectReference: {fileID: 1930817101}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 05a0c32cfbe008e44a0534c3f75401bc, type: 3}
---- !u!114 &3792277919406070272 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3792277919618502917, guid: 05a0c32cfbe008e44a0534c3f75401bc,
-    type: 3}
-  m_PrefabInstance: {fileID: 3792277919406070271}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 678adad2d11507647b03d85d8e781767, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &6339229969512732614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -682,23 +665,27 @@ PrefabInstance:
       objectReference: {fileID: 1930817101}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: parryProbability
-      value: 0.7
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: counterProbability
-      value: 0.7
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: counterDelayProbability
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
+      propertyPath: deltaSecondsBetweenAttacks
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: averageSecondsBetweenAttacks
-      value: 1.5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: blindParryAfterReboundProbability
-      value: 0.4
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 496426582, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: roundsManager
@@ -708,7 +695,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ea71b86aaf10c2c45a1aef54aeeb2b31, type: 2}
+      objectReference: {fileID: 2100000, guid: b72da0fc9794e4546a7fb89eccbd52d2, type: 2}
     - target: {fileID: 5229031742542989540, guid: a0036cd5dcccb334ea0033a2ccaa41f1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1167,11 +1154,6 @@ PrefabInstance:
       propertyPath: tenSecondsManager
       value: 
       objectReference: {fileID: 1810989213}
-    - target: {fileID: 6659867292988328137, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
-        type: 3}
-      propertyPath: nextScene
-      value: DelayTalk
-      objectReference: {fileID: 0}
     - target: {fileID: 6659867292988328137, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
         type: 3}
       propertyPath: roundsManager
