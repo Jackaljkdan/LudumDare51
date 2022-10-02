@@ -18,6 +18,8 @@ namespace LudumDare51.Fencer
 
         public List<AudioClip> painClips;
 
+        public List<AudioClip> attackClips;
+
         private void Reset()
         {
             controller = GetComponent<FencerController>();
@@ -29,11 +31,17 @@ namespace LudumDare51.Fencer
         private void Start()
         {
             controller.onHit.AddListener(OnHit);
+            controller.onAttack.AddListener(OnAttack);
         }
 
         private void OnHit()
         {
             audioSource.PlayRandomClip(painClips, oneShot: true);
+        }
+
+        private void OnAttack()
+        {
+            audioSource.PlayRandomClip(attackClips, oneShot: true);
         }
     }
 }

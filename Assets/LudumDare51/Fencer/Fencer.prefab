@@ -233,6 +233,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 25dae52cb892c4b42bca70f756a5f22c, type: 3}
   - {fileID: 8300000, guid: 65e18a029bb246946af239a56027807c, type: 3}
   - {fileID: 8300000, guid: 9697fb2949ac6fa42b384c35c60248a4, type: 3}
+  attackClips:
+  - {fileID: 8300000, guid: c4fa7fe2f94eb174998cef0855139f52, type: 3}
+  - {fileID: 8300000, guid: d8bf687bbba3c604f87644336e30d751, type: 3}
+  - {fileID: 8300000, guid: 110f39d954a92fc4c8c5a171efee8ca2, type: 3}
 --- !u!1 &7717309127938773570
 GameObject:
   m_ObjectHideFlags: 0
