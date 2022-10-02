@@ -92,6 +92,9 @@ namespace LudumDare51.TenSeconds
 
         public override void Revert()
         {
+            player.onHit.RemoveListener(OnPlayerHit);
+            ai.onHit.RemoveListener(OnAiHit);
+
             var playerSword = player.GetComponentInChildren<Sword>();
             var aiSword = ai.GetComponentInChildren<Sword>();
 
