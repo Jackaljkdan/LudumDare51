@@ -45,6 +45,7 @@ namespace LudumDare51.Rounds
 
         [Injected]
         public FencerController player;
+        [Injected]
         public FencerController ai;
 
         [Injected]

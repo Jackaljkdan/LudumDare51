@@ -13,7 +13,10 @@ namespace LudumDare51.TenSeconds
     {
         #region Inspector
 
-        public List<Light> lights;
+        [Injected]
+        public Light mainLight;
+        [Injected]
+        public Light backLight;
 
         [Injected]
         public new Camera camera;
@@ -27,6 +30,8 @@ namespace LudumDare51.TenSeconds
         private void Awake()
         {
             Context context = Context.Find(this);
+            mainLight = context.Get<Light>(this, "main");
+            backLight = context.Get<Light>(this, "back");
             camera = context.Get<Camera>(this);
         }
 
@@ -38,8 +43,8 @@ namespace LudumDare51.TenSeconds
             camera.backgroundColor = Color.black;
             RenderSettings.ambientLight = Color.black;
 
-            foreach (var light in lights)
-                light.enabled = false;
+            mainLight.enabled = false;
+            backLight.enabled = false;
 
             doneCallback?.Invoke();
         }
@@ -64,8 +69,8 @@ namespace LudumDare51.TenSeconds
             camera.backgroundColor = cameraBackgroundColor;
             RenderSettings.ambientLight = ambientLightColor;
 
-            foreach (var light in lights)
-                light.enabled = true;
+            mainLight.enabled = true;
+            backLight.enabled = true;
         }
     }
 }
