@@ -71,7 +71,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributes:
     maxHealthPoints:
-      _value: 2
+      _value: 3
       onChange:
         m_PersistentCalls:
           m_Calls: []

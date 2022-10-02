@@ -22,6 +22,7 @@ namespace LudumDare51.Rounds
         public int bestOf = 3;
 
         public List<AudioClip> roundClips;
+        public List<AudioClip> extraRoundsClips;
 
         public AudioClip winClip;
         public AudioClip loseClip;
@@ -118,7 +119,10 @@ namespace LudumDare51.Rounds
             player.attributes.Reset();
             ai.attributes.Reset();
 
-            voiceAudioSource.PlayOneShot(roundClips[round.Value]);
+            if (round.Value < roundClips.Count)
+                voiceAudioSource.PlayOneShot(roundClips[round.Value]);
+            else
+                voiceAudioSource.PlayRandomClip(extraRoundsClips, oneShot: true);
 
             round.Value++;
 

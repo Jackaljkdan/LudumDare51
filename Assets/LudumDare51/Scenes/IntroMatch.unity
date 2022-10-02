@@ -640,6 +640,11 @@ PrefabInstance:
       propertyPath: lights.Array.data[1]
       value: 
       objectReference: {fileID: 1552211394}
+    - target: {fileID: 3792277919618502919, guid: 05a0c32cfbe008e44a0534c3f75401bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3792277919755678737, guid: 05a0c32cfbe008e44a0534c3f75401bc,
         type: 3}
       propertyPath: ai
@@ -663,6 +668,26 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1930817101}
+    - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
+      propertyPath: parryProbability
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
+      propertyPath: counterProbability
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
+      propertyPath: counterDelayProbability
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
+      propertyPath: averageSecondsBetweenAttacks
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
+      propertyPath: blindParryAfterReboundProbability
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 496426582, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: roundsManager
       value: 

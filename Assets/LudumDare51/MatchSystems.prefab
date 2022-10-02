@@ -162,11 +162,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7030c0bcf7351ee4292588378a332a49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bestOf: 3
+  bestOf: 5
   roundClips:
   - {fileID: 8300000, guid: 8a80905d726208c4b9a4564ef14e4e52, type: 3}
   - {fileID: 8300000, guid: 70dc93061820f914fadd8b97681e1918, type: 3}
   - {fileID: 8300000, guid: 3ab2302e941bcac44bd1ac893a7295ec, type: 3}
+  extraRoundsClips:
+  - {fileID: 8300000, guid: f0eb39d8fb895794cac7f249259feedb, type: 3}
+  - {fileID: 8300000, guid: c0c08376942012f4682f8a9356a15ec0, type: 3}
+  - {fileID: 8300000, guid: 2ccafede6d20e994f925e6641c804031, type: 3}
   winClip: {fileID: 8300000, guid: d0c737147f8603941a3be140a085ac6b, type: 3}
   loseClip: {fileID: 8300000, guid: 9ae56df2d16f2db47954fe3eae4a4e7e, type: 3}
   nextRoundDelaySeconds: 3
@@ -465,9 +469,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 290376a4bb9c99546bafee45fe6e49b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lights:
-  - {fileID: 0}
-  - {fileID: 0}
+  mainLight: {fileID: 0}
+  backLight: {fileID: 0}
   camera: {fileID: 0}
 --- !u!1 &3792277919618502919
 GameObject:
