@@ -36,6 +36,12 @@ EditorBuildSettings:
     path: Assets/LudumDare51/Scenes/HardTalk.unity
     guid: 6c56e9a187544d540ad325524990485e
   - enabled: 1
+    path: Assets/LudumDare51/Scenes/FinalMatch.unity
+    guid: c23c0e5bcb167fc4ab6a5b2902d7958e
+  - enabled: 1
+    path: Assets/LudumDare51/Scenes/FinalTalk.unity
+    guid: 687cee84eb232c043955d3fbafc3c435
+  - enabled: 1
     path: Assets/LudumDare51/Scenes/End.unity
     guid: 630f8f8df7a3f284c982759a28e00605
   m_configObjects: {}
