@@ -31,7 +31,7 @@ namespace LudumDare51.UI
 
         private void OnDestroy()
         {
-            Debug.Log("but why");
+            DOTween.Kill(image.transform);
         }
     }
 }
