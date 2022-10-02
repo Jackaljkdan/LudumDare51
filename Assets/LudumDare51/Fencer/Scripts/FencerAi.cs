@@ -154,6 +154,9 @@ namespace LudumDare51.Fencer
                 return;
             }
 
+            if (!player.IsCurrentOrNextAnimation(player.stance.AttackAnimationName()))
+                return;
+
             float normalizedTime;
 
             bool isNext = player.IsNextAnimation(player.stance.AttackAnimationName());
