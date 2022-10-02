@@ -128,6 +128,9 @@ namespace LudumDare51.Fencer
 
         public void EnterFocus()
         {
+            if (isFocusActive)
+                return;
+
             if (!canParry)
             {
                 bufferedCommand = FencerCommand.EnterFocus;

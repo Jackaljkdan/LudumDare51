@@ -20,6 +20,8 @@ namespace LudumDare51.Fencer
 
         #endregion
 
+        private bool wasFocusing;
+
         private void Start()
         {
             if (Application.isMobilePlatform)
@@ -29,9 +31,23 @@ namespace LudumDare51.Fencer
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
+            {
                 controller.Attack();
+            }
             else if (Input.GetMouseButtonDown(1))
+            {
                 controller.Parry();
+            }
+            else if (Input.GetKey(KeyCode.Space))
+            {
+                wasFocusing = true;
+                controller.EnterFocus();
+            }
+            else if (wasFocusing)
+            {
+                wasFocusing = false;
+                controller.ExitFocus();
+            }
         }
     }
 }
