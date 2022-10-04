@@ -674,7 +674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: parryProbability
-      value: 0.98
+      value: 0.96
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: tenSecondsManager
@@ -698,7 +698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: blindParryAfterReboundProbability
-      value: 0.1
+      value: 0.175
       objectReference: {fileID: 0}
     - target: {fileID: 496426582, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: roundsManager

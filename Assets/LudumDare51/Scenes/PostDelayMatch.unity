@@ -669,7 +669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: parryProbability
-      value: 0.95
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: tenSecondsManager
@@ -681,7 +681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: counterDelayProbability
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: deltaSecondsBetweenAttacks

@@ -674,7 +674,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: parryProbability
-      value: 0.96
+      value: 0.94
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: tenSecondsManager
@@ -686,7 +686,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: counterDelayProbability
-      value: 0.7
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: deltaSecondsBetweenAttacks
@@ -698,7 +698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: blindParryAfterReboundProbability
-      value: 0.2
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 496426582, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: roundsManager
