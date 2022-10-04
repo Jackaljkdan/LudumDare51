@@ -91,6 +91,7 @@ namespace LudumDare51.Rounds
                     if (player.attributes.healthPoints.Value > ai.attributes.healthPoints.Value && player.attributes.healthPoints.Value > 0)
                     {
                         playerWins.Value++;
+                        player.bufferedCommand = FencerCommand.None;
 
                         if (playerWins.Value > bestOf / 2)
                         {
@@ -102,6 +103,7 @@ namespace LudumDare51.Rounds
                     else if (ai.attributes.healthPoints.Value > player.attributes.healthPoints.Value && ai.attributes.healthPoints.Value > 0)
                     {
                         aiWins.Value++;
+                        ai.bufferedCommand = FencerCommand.None;
 
                         if (aiWins.Value > bestOf / 2)
                         {

@@ -703,7 +703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: parryProbability
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: tenSecondsManager
@@ -723,7 +723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: averageSecondsBetweenAttacks
-      value: 0.2
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 496426576, guid: a0036cd5dcccb334ea0033a2ccaa41f1, type: 3}
       propertyPath: blindParryAfterReboundProbability
@@ -746,7 +746,7 @@ PrefabInstance:
     - target: {fileID: 6868223677691131835, guid: a0036cd5dcccb334ea0033a2ccaa41f1,
         type: 3}
       propertyPath: attributes.maxHealthPoints._value
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6868223677691131836, guid: a0036cd5dcccb334ea0033a2ccaa41f1,
         type: 3}

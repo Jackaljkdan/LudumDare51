@@ -169,6 +169,9 @@ namespace LudumDare51.Fencer
 
         public void GetHit(FencerStance byStance, int damage)
         {
+            if (attributes.healthPoints.Value <= 0)
+                return;
+
             DisallowAll();
             ResetStatus();
 
