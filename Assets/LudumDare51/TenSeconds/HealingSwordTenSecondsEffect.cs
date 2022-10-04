@@ -11,7 +11,7 @@ using UnityEngine.Events;
 namespace LudumDare51.TenSeconds
 {
     [DisallowMultipleComponent]
-    public class HittingHealsTenSecondsEffect : TenSecondsEffect
+    public class HealingSwordTenSecondsEffect : TenSecondsEffect
     {
         #region Inspector
 
@@ -88,7 +88,7 @@ namespace LudumDare51.TenSeconds
 
         public override string GetDescription()
         {
-            return "Hitting Heals";
+            return "Healing Sword";
         }
 
         public override string GetInstructions()
