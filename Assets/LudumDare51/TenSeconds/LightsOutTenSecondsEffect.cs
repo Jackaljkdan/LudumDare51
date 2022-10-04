@@ -1,3 +1,4 @@
+using DG.Tweening;
 using JK.Injection;
 using JK.Injection.PropertyDrawers;
 using System;
@@ -21,11 +22,16 @@ namespace LudumDare51.TenSeconds
         [Injected]
         public new Camera camera;
 
+        [Injected]
+        public AudioSource musicAudioSource;
+
         #endregion
 
         private Color cameraBackgroundColor;
 
         private Color ambientLightColor;
+
+        private float musicVolume;
 
         private void Awake()
         {
@@ -33,18 +39,25 @@ namespace LudumDare51.TenSeconds
             mainLight = context.Get<Light>(this, "main");
             backLight = context.Get<Light>(this, "back");
             camera = context.Get<Camera>(this);
+            musicAudioSource = context.Get<AudioSource>(this, "music");
+        }
+
+        private void Start()
+        {
+            cameraBackgroundColor = camera.backgroundColor;
+            ambientLightColor = RenderSettings.ambientLight;
+            musicVolume = musicAudioSource.volume;
         }
 
         public override void Apply(UnityAction doneCallback)
         {
-            cameraBackgroundColor = camera.backgroundColor;
-            ambientLightColor = RenderSettings.ambientLight;
-
             camera.backgroundColor = Color.black;
             RenderSettings.ambientLight = Color.black;
 
             mainLight.enabled = false;
             backLight.enabled = false;
+
+            musicAudioSource.DOFade(musicVolume / 4, 0.5f);
 
             doneCallback?.Invoke();
         }
@@ -71,6 +84,8 @@ namespace LudumDare51.TenSeconds
 
             mainLight.enabled = true;
             backLight.enabled = true;
+
+            musicAudioSource.DOFade(musicVolume, 0.5f);
         }
     }
 }
