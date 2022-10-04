@@ -186,17 +186,8 @@ namespace LudumDare51.Fencer
                 return;
             }
 
-            if (!player.IsCurrentOrNextAnimation(player.stance.AttackAnimationName()))
+            if (!player.TryGetAttackNormalizedTime(out float normalizedTime, out bool isNextAnimation))
                 return;
-
-            float normalizedTime;
-
-            bool isNext = player.IsNextAnimation(player.stance.AttackAnimationName());
-
-            if (isNext)
-                normalizedTime = player.GetNextAnimatorNormalizedTime();
-            else
-                normalizedTime = player.GetCurrentAnimationNormalizedTime();
 
             float relevantParryDelay;
 

@@ -299,6 +299,25 @@ namespace LudumDare51.Fencer
             return animator.GetNextAnimatorStateInfo(0).normalizedTime;
         }
 
+        public bool TryGetAttackNormalizedTime(out float normalizedTime, out bool isNextAnimation)
+        {
+            if (!IsCurrentOrNextAnimation(stance.AttackAnimationName()))
+            {
+                normalizedTime = 0;
+                isNextAnimation = false;
+                return false;
+            }
+
+            isNextAnimation = IsNextAnimation(stance.AttackAnimationName());
+
+            if (isNextAnimation)
+                normalizedTime = GetNextAnimatorNormalizedTime();
+            else
+                normalizedTime = GetCurrentAnimationNormalizedTime();
+
+            return true;
+        }
+
         public bool IsInTransition()
         {
             return animator.IsInTransition(0);
