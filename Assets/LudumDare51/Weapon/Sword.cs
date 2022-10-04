@@ -24,27 +24,15 @@ namespace LudumDare51.Weapon
         [ReadOnly]
         public FencerController wielder;
 
-        public bool alreadyHit;
-
         #endregion
 
         private void Start()
         {
             wielder = GetComponentInParent<FencerController>();
-
-            wielder.onAttack.AddListener(OnAttack);
-        }
-
-        private void OnAttack()
-        {
-            alreadyHit = false;
         }
 
         private void OnTriggerStay(Collider other)
         {
-            if (alreadyHit)
-                return;
-
             if (!wielder.isAttackActive)
                 return;
 
@@ -67,8 +55,6 @@ namespace LudumDare51.Weapon
             }
 
             wielder.ResetStatus();
-
-            alreadyHit = true;
         }
     }
 }

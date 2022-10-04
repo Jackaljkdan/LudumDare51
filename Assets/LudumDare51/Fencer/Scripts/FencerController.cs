@@ -34,12 +34,8 @@ namespace LudumDare51.Fencer
         public bool canAttack;
         public bool canParry;
 
-        public bool isAttacking;
         public bool isAttackActive;
-        public bool wasAttackActive;
-
         public bool isParryActive;
-
         public bool isFocusActive;
 
         public FencerCommand bufferedCommand;
@@ -86,7 +82,6 @@ namespace LudumDare51.Fencer
 
             DisallowAll();
             SetAttackBlend(0);
-            isAttacking = true;
 
             if (IsCurrentAnimation(stance.ParryAnimationName()))
                 CrossFade(stance.AttackAnimationName(), transitionSeconds: 0.2f, parryToAttackOffsetSeconds);
@@ -118,7 +113,7 @@ namespace LudumDare51.Fencer
             else if (IsCurrentAnimationHit())
             {
                 isParryActive = true;
-                CrossFade(stance.ParryAnimationName(), transitionSeconds: 0.2f, hitToAnyOffsetSeconds);
+                CrossFade(stance.ParryAnimationName(), transitionSeconds: 0.2f, 0);
             }
             else
             {
@@ -167,7 +162,6 @@ namespace LudumDare51.Fencer
         public void Rebound()
         {
             ResetStatus();
-            wasAttackActive = true;
             SetAttackBlend(1, reboundBlendSeconds);
 
             onRebound.Invoke();
@@ -226,9 +220,7 @@ namespace LudumDare51.Fencer
 
         public void ResetStatus()
         {
-            isAttacking = false;
             isAttackActive = false;
-            wasAttackActive = false;
             isParryActive = false;
             isFocusActive = false;
         }
@@ -248,16 +240,12 @@ namespace LudumDare51.Fencer
         public void ActivateAttack()
         {
             if (!IsInTransition() || IsNextAnimation(stance.AttackAnimationName()))
-            {
                 isAttackActive = true;
-                wasAttackActive = false;
-            }
         }
 
         public void DeactivateAttack()
         {
             isAttackActive = false;
-            wasAttackActive = true;
         }
 
         public void ActivateParry()
@@ -341,6 +329,11 @@ namespace LudumDare51.Fencer
         public bool IsCurrentAnimationHit()
         {
             return IsCurrentAnimation(FencerStance.Thrust.HitAnimationName());
+        }
+
+        public bool IsAttacking()
+        {
+            return isAttackActive || IsCurrentAnimation(stance.AttackAnimationName()) && GetCurrentAnimationNormalizedTime() <= 0.4f;
         }
     }
 }

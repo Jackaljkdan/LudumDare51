@@ -20,7 +20,7 @@ namespace LudumDare51.Fencer
         public FencerController controller;
 
         public float parryDelay = 0.2f;
-        public float hitParryDelay = 0.3f;
+        public float maxParryDelay = 0.32f;
         public float counterDelay = 0.2f;
 
         public float averageSecondsBetweenAttacks = 2f;
@@ -127,7 +127,7 @@ namespace LudumDare51.Fencer
 
         private void IdleNoFocusUpdate()
         {
-            if (player.isAttacking && !player.wasAttackActive)
+            if (player.IsAttacking())
             {
                 if (RandomUtils.Should(parryProbability))
                 {
@@ -153,7 +153,7 @@ namespace LudumDare51.Fencer
                 return;
             }
 
-            if (!player.isAttacking || player.wasAttackActive)
+            if (!player.IsAttacking())
                 state = FencerAiState.Idle;
         }
 
@@ -179,7 +179,7 @@ namespace LudumDare51.Fencer
 
         private void ParryWaitingUpdate()
         {
-            if (!player.isAttacking || player.wasAttackActive)
+            if (!player.IsAttacking())
             {
                 EnterIdle();
                 IdleUpdate();
@@ -189,14 +189,7 @@ namespace LudumDare51.Fencer
             if (!player.TryGetAttackNormalizedTime(out float normalizedTime, out bool isNextAnimation))
                 return;
 
-            float relevantParryDelay;
-
-            if (controller.IsCurrentAnimationHit())
-                relevantParryDelay = hitParryDelay;
-            else
-                relevantParryDelay = parryDelay;
-
-            if (normalizedTime >= relevantParryDelay)
+            if (normalizedTime >= parryDelay)
                 EnterParrying();
         }
 
@@ -275,7 +268,7 @@ namespace LudumDare51.Fencer
         private void OnRebound()
         {
             if (RandomUtils.Should(blindParryAfterReboundProbability))
-                controller.Parry();
+                EnterParrying();
         }
 
         private void OnHit()
