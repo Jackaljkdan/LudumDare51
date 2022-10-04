@@ -9,28 +9,24 @@ using UnityEngine.UI;
 namespace LudumDare51.UI
 {
     [DisallowMultipleComponent]
-    public class StartGamePanel : MonoBehaviour
+    [RequireComponent(typeof(Button))]
+    public class ChangeSceneButton : MonoBehaviour
     {
         #region Inspector
 
-        public Button button;
-
-        private void Reset()
-        {
-            button = GetComponentInChildren<Button>();
-        }
+        public string targetSceneName;
 
         #endregion
 
         private void Start()
         {
-            button.onClick.AddListener(OnClicked);
+            GetComponent<Button>().onClick.AddListener(OnClicked);
         }
 
         private void OnClicked()
         {
-            button.enabled = false;
-            SceneManager.LoadSceneAsync("IntroTalk");
+            GetComponent<Button>().enabled = false;
+            SceneManager.LoadSceneAsync(targetSceneName);
         }
     }
 }

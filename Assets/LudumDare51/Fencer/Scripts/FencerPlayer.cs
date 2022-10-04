@@ -13,6 +13,10 @@ namespace LudumDare51.Fencer
 
         public FencerController controller;
 
+        public KeyCode attackKey = KeyCode.Mouse0;
+        public KeyCode parryKey = KeyCode.Mouse1;
+        public KeyCode focusKey = KeyCode.Space;
+
         private void Reset()
         {
             controller = GetComponent<FencerController>();
@@ -22,23 +26,17 @@ namespace LudumDare51.Fencer
 
         private bool wasFocusing;
 
-        private void Start()
-        {
-            if (Application.isMobilePlatform)
-                Destroy(this);
-        }
-
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetKeyDown(attackKey))
             {
                 controller.Attack();
             }
-            else if (Input.GetMouseButtonDown(1))
+            else if (Input.GetKeyDown(parryKey))
             {
                 controller.Parry();
             }
-            else if (Input.GetKey(KeyCode.Space))
+            else if (Input.GetKey(focusKey))
             {
                 wasFocusing = true;
                 controller.EnterFocus();
