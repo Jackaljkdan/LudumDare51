@@ -14,9 +14,13 @@ namespace JK.Utils
         public const bool IsEditor = false;
 #endif
 
-        public static bool IsMobile => Application.isMobilePlatform;
+#if UNITY_ANDROID || UNITY_IOS
+        public const bool IsMobileBuild = true;
+#else
+        public const bool IsMobileBuild = false;
+#endif
 
-        public static bool IsDesktop => !IsMobile;
+        public const bool IsDesktopBuild = !IsMobileBuild;
 
 #if UNITY_WEBGL
         public const bool IsWebGL = true;

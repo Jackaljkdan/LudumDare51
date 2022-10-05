@@ -18,7 +18,7 @@ namespace JK.Actuators.Input
 
         private void Awake()
         {
-            if (!PlatformUtils.IsDesktop)
+            if (!PlatformUtils.IsDesktopBuild)
                 Destroy(this);
         }
 
