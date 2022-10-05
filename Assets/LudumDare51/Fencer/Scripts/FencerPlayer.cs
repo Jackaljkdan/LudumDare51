@@ -1,3 +1,4 @@
+using JK.Utils;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,6 +26,12 @@ namespace LudumDare51.Fencer
         #endregion
 
         private bool wasFocusing;
+
+        private void Start()
+        {
+            if (PlatformUtils.IsMobileBuild)
+                Destroy(this);
+        }
 
         private void Update()
         {

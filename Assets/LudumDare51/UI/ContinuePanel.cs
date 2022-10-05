@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace LudumDare51.UI
 {
@@ -17,6 +18,8 @@ namespace LudumDare51.UI
         #region Inspector
 
         public CanvasGroup group;
+
+        public Button button;
 
         public string nextScene;
 
@@ -28,6 +31,7 @@ namespace LudumDare51.UI
         private void Reset()
         {
             group = GetComponent<CanvasGroup>();
+            button = GetComponent<Button>();
         }
 
         #endregion
@@ -41,6 +45,7 @@ namespace LudumDare51.UI
         private void Start()
         {
             roundsManager.onWinOrLose.AddListener(OnWinOrLose);
+            button.onClick.AddListener(OnClicked);
             gameObject.SetActive(false);
         }
 
@@ -56,17 +61,14 @@ namespace LudumDare51.UI
             transform.DOScale(1, 0.25f).SetDelay(2).onComplete += () => enabled = true;
         }
 
-        private void Update()
+        private void OnClicked()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                enabled = false;
+            button.onClick.RemoveListener(OnClicked);
 
-                if (alwaysGoToNextScene || roundsManager.playerWins.Value > roundsManager.aiWins.Value)
-                    SceneManager.LoadSceneAsync(nextScene);
-                else
-                    SceneManager.LoadSceneAsync(gameObject.scene.name);
-            }
+            if (alwaysGoToNextScene || roundsManager.playerWins.Value > roundsManager.aiWins.Value)
+                SceneManager.LoadSceneAsync(nextScene);
+            else
+                SceneManager.LoadSceneAsync(gameObject.scene.name);
         }
     }
 }

@@ -299,7 +299,8 @@ PrefabInstance:
       propertyPath: targetSceneName
       value: MultiplayerIntro
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9063952841220313866, guid: c5773ec6dfebb1d4a9c02f79d35b4e71, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c5773ec6dfebb1d4a9c02f79d35b4e71, type: 3}
 --- !u!224 &220659045 stripped
 RectTransform:
@@ -307,6 +308,24 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 220659044}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &220659046 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6711181732527156985, guid: c5773ec6dfebb1d4a9c02f79d35b4e71,
+    type: 3}
+  m_PrefabInstance: {fileID: 220659044}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &220659047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220659046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a10ed28900e00b4cb645791c8deb5d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
