@@ -243,7 +243,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Left Player controls:\n- Attack: \tleft control\n- Parry:\t\tleft shift\n-
-    Guard:\t\ttab"
+    Focus:\t\ttab"
 --- !u!222 &447876944
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -780,7 +780,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Right Player controls:\n- Attack: \tleft mouse\n- Parry:\t\tright mouse\n-
-    Guard:\t\tMiddle mouse"
+    Focus:\t\tMiddle mouse"
 --- !u!222 &1696414137
 CanvasRenderer:
   m_ObjectHideFlags: 0

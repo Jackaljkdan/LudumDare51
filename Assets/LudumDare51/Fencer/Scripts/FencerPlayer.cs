@@ -29,7 +29,7 @@ namespace LudumDare51.Fencer
 
         private void Start()
         {
-            if (PlatformUtils.IsMobileBuild)
+            if (!PlatformUtils.IsDesktopBuild)
                 Destroy(this);
         }
 

@@ -15,7 +15,7 @@ namespace LudumDare51.Rounds
 
         public Behaviour target;
 
-        //[Injected]
+        [Injected]
         public RoundsManager roundsManager;
 
         #endregion
@@ -34,14 +34,25 @@ namespace LudumDare51.Rounds
             OnRoundEnd();
         }
 
+        private void OnDestroy()
+        {
+            if (roundsManager != null)
+            {
+                roundsManager.onRoundEnd.RemoveListener(OnRoundEnd);
+                roundsManager.onFight.RemoveListener(OnFight);
+            }
+        }
+
         private void OnRoundEnd()
         {
-            target.enabled = false;
+            if (target != null)
+                target.enabled = false;
         }
 
         private void OnFight()
         {
-            target.enabled = true;
+            if (target != null)
+                target.enabled = true;
         }
     }
 }
