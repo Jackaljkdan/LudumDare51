@@ -9,6 +9,7 @@ using UnityEngine.Assertions;
 
 #if UNITY_EDITOR
 using UnityEditor;
+using UnityEditor.SceneManagement;
 #endif
 
 namespace JK.Injection.PropertyDrawers
@@ -38,11 +39,11 @@ namespace JK.Injection.PropertyDrawers
 
             if (!property.propertyType.IsUnityObjectType())
             {
-                EditorGUI.LabelField(position, $"{GetInjectedValue(property)} ({fieldInfo.FieldType})", GUI.skin.box);
+                EditorGUI.LabelField(position, $"{GetInjectedValue(property)} ({fieldInfo.FieldType.Name})", GUI.skin.box);
                 return;
             }
 
-            bool clicked = GUI.Button(position, $"{GetInjectedValue(property)}", ButtonStyle);
+            bool clicked = GUI.Button(position, $"{GetInjectedValue(property)} ({fieldInfo.FieldType.Name})", ButtonStyle);
 
             if (clicked)
             {
@@ -56,8 +57,12 @@ namespace JK.Injection.PropertyDrawers
 
         private object GetInjectedValue(SerializedProperty property)
         {
+            if (PrefabStageUtility.GetCurrentPrefabStage() != null)
+                return "Unavailable in prefab mode";
+
             if (!(property.serializedObject.targetObject is Component component))
                 return null;
+
             InitContexts(component);
 
             MethodInfo awakeMethod = component.GetType().GetMethod("Awake", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
