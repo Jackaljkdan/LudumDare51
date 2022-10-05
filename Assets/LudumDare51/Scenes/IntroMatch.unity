@@ -925,6 +925,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3205767158259672148, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
+        type: 3}
+      propertyPath: m_Name
+      value: VolumeToggle
+      objectReference: {fileID: 0}
     - target: {fileID: 4196173321322420906, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
         type: 3}
       propertyPath: m_AnchorMax.y
