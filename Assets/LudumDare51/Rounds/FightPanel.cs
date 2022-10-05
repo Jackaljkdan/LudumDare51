@@ -20,6 +20,11 @@ namespace LudumDare51.Rounds
 
         public Text text;
 
+        [TextArea]
+        public string winString = "You\nWin!";
+        [TextArea]
+        public string loseString = "You\nLose";
+
         [Injected]
         public RoundsManager roundsManager;
 
@@ -75,9 +80,9 @@ namespace LudumDare51.Rounds
             group.DOFade(1, 0.25f).SetDelay(1);
 
             if (roundsManager.playerWins.Value > roundsManager.aiWins.Value)
-                text.text = "You\nWin!";
+                text.text = winString;
             else
-                text.text = "You\nLose";
+                text.text = loseString;
         }
     }
 }

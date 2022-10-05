@@ -569,6 +569,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1930817101}
+    - target: {fileID: 3792277918178260185, guid: 05a0c32cfbe008e44a0534c3f75401bc,
+        type: 3}
+      propertyPath: loseClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d0c737147f8603941a3be140a085ac6b, type: 3}
     - target: {fileID: 3792277918367767631, guid: 05a0c32cfbe008e44a0534c3f75401bc,
         type: 3}
       propertyPath: camera
@@ -719,6 +724,11 @@ PrefabInstance:
       propertyPath: roundsManager
       value: 
       objectReference: {fileID: 2035494182}
+    - target: {fileID: 1047771372681984098, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
+        type: 3}
+      propertyPath: m_Text
+      value: Player 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1929608078963541833, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1006,6 +1016,13 @@ PrefabInstance:
       objectReference: {fileID: 1930817101}
     - target: {fileID: 6659867292379277236, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
         type: 3}
+      propertyPath: loseString
+      value: 'You
+
+        Win!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6659867292379277236, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
+        type: 3}
       propertyPath: roundsManager
       value: 
       objectReference: {fileID: 2035494182}
@@ -1024,6 +1041,11 @@ PrefabInstance:
       propertyPath: tenSecondsManager
       value: 
       objectReference: {fileID: 1810989213}
+    - target: {fileID: 6659867292952367545, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
+        type: 3}
+      propertyPath: m_Text
+      value: Player 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6659867292988328137, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
         type: 3}
       propertyPath: nextScene
@@ -1034,6 +1056,11 @@ PrefabInstance:
       propertyPath: roundsManager
       value: 
       objectReference: {fileID: 2035494182}
+    - target: {fileID: 6659867292988328137, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
+        type: 3}
+      propertyPath: alwaysGoToNextScene
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41a30aa5175c6984d9a1c03f9c9dae1b, type: 3}
 --- !u!1001 &8524284553045025462

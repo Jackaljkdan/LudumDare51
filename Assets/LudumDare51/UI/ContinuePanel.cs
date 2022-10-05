@@ -20,6 +20,8 @@ namespace LudumDare51.UI
 
         public string nextScene;
 
+        public bool alwaysGoToNextScene;
+
         [Injected]
         public RoundsManager roundsManager;
 
@@ -60,7 +62,7 @@ namespace LudumDare51.UI
             {
                 enabled = false;
 
-                if (roundsManager.playerWins.Value > roundsManager.aiWins.Value)
+                if (alwaysGoToNextScene || roundsManager.playerWins.Value > roundsManager.aiWins.Value)
                     SceneManager.LoadSceneAsync(nextScene);
                 else
                     SceneManager.LoadSceneAsync(gameObject.scene.name);
