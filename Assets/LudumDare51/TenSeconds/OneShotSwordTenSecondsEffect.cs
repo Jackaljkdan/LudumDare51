@@ -61,6 +61,9 @@ namespace LudumDare51.TenSeconds
             playerSword.GetComponent<MeshRenderer>().material = oneShotMaterial;
             aiSword.GetComponent<MeshRenderer>().material = oneShotMaterial;
 
+            playerSword.GetComponentInChildren<OneShotParticleSystem>(includeInactive: true).Play();
+            aiSword.GetComponentInChildren<OneShotParticleSystem>(includeInactive: true).Play();
+
             playerSword.damage = oneShotDamage;
             aiSword.damage = oneShotDamage;
 
@@ -89,6 +92,9 @@ namespace LudumDare51.TenSeconds
 
             playerSword.GetComponent<MeshRenderer>().material = normalPlayerMaterial;
             aiSword.GetComponent<MeshRenderer>().material = normalAiMaterial;
+
+            playerSword.GetComponentInChildren<OneShotParticleSystem>(includeInactive: true).Stop();
+            aiSword.GetComponentInChildren<OneShotParticleSystem>(includeInactive: true).Stop();
 
             playerSword.damage = normalPlayerDamage;
             aiSword.damage = normalAiDamage;

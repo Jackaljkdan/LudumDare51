@@ -1308,6 +1308,11 @@ PrefabInstance:
       propertyPath: tenSecondsManager
       value: 
       objectReference: {fileID: 1810989213}
+    - target: {fileID: 6659867292812692034, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 43.262817
+      objectReference: {fileID: 0}
     - target: {fileID: 6659867292988328137, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
         type: 3}
       propertyPath: nextScene
