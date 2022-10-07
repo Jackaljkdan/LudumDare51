@@ -30,6 +30,17 @@ namespace LudumDare51.TenSeconds
         [Injected]
         public RoundsManager roundsManager;
 
+        [ContextMenu("Tick To Zero")]
+        private void TickInEditMode()
+        {
+            if (!Application.isPlaying)
+                return;
+
+            Stop();
+            seconds.SetSilently(1);
+            TickTimer();
+        }
+
         #endregion
 
         private List<TenSecondsEffect> distractions = new List<TenSecondsEffect>(16);
@@ -83,15 +94,15 @@ namespace LudumDare51.TenSeconds
 
         public void Resume()
         {
-            InvokeRepeating(nameof(Timer), 1, 1);
+            InvokeRepeating(nameof(TickTimer), 1, 1);
         }
 
         public void Stop()
         {
-            CancelInvoke(nameof(Timer));
+            CancelInvoke(nameof(TickTimer));
         }
 
-        private void Timer()
+        private void TickTimer()
         {
             seconds.Value--;
             secondStartTime = Time.time;
