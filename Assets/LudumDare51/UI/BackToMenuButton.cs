@@ -37,6 +37,12 @@ namespace LudumDare51.UI
             GetComponent<Button>().onClick.AddListener(OnClicked);
         }
 
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                OnClicked();
+        }
+
         private void OnClicked()
         {
             if (Time.time > firstTapTime + secondTapSeconds)
