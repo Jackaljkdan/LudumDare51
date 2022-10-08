@@ -52,7 +52,7 @@ namespace LudumDare51.UI
             GetComponentsInChildren(buffer);
 
             foreach (var text in buffer)
-                text.text = Tokens.Format(text.text);
+                text.text = Tokens.Format(text.text, isMultiplayer: false);
         }
 
         private void Update()

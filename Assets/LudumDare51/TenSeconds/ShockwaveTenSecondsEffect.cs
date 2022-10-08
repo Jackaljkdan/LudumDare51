@@ -1,4 +1,7 @@
+using JK.Injection;
+using JK.Injection.PropertyDrawers;
 using JK.Utils;
+using LudumDare51.Rounds;
 using LudumDare51.UI;
 using System;
 using System.Collections;
@@ -15,7 +18,16 @@ namespace LudumDare51.TenSeconds
 
         public Shockwave prefab;
 
+        [Injected]
+        public RoundsManager roundsManager;
+
         #endregion
+
+        private void Awake()
+        {
+            Context context = Context.Find(this);
+            roundsManager = context.Get<RoundsManager>(this);
+        }
 
         public override void Apply(UnityAction doneCallback)
         {
@@ -35,7 +47,7 @@ namespace LudumDare51.TenSeconds
 
         public override string GetInstructions()
         {
-            return Tokens.Format("Hold down {Focus}!");
+            return Tokens.Format("Hold down {Focus}!", roundsManager.isMultiplayer);
         }
 
         public override void Revert()

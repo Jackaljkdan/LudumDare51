@@ -9,13 +9,15 @@ namespace LudumDare51.UI
 {
     public static class Tokens
     {
-        public static string Format(string s)
+        public static string Format(string s, bool isMultiplayer)
         {
             return s.Replace(
                 "{Focus}",
-                PlatformUtils.IsDesktopBuild
-                    ? "SPACEBAR"
-                    : "FOCUS"
+                isMultiplayer
+                    ? "FOCUS"
+                    : PlatformUtils.IsDesktopBuild
+                        ? "SPACEBAR"
+                        : "FOCUS"
             );
         }
     }

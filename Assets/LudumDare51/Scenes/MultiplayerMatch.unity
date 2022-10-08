@@ -1904,6 +1904,11 @@ PrefabInstance:
       propertyPath: loseClip
       value: 
       objectReference: {fileID: 8300000, guid: d0c737147f8603941a3be140a085ac6b, type: 3}
+    - target: {fileID: 3792277918178260185, guid: 05a0c32cfbe008e44a0534c3f75401bc,
+        type: 3}
+      propertyPath: isMultiplayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3792277918367767631, guid: 05a0c32cfbe008e44a0534c3f75401bc,
         type: 3}
       propertyPath: camera
@@ -2615,6 +2620,11 @@ PrefabInstance:
         type: 3}
       propertyPath: alwaysGoToNextScene
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8405218807987667347, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1859321426984801026, guid: 41a30aa5175c6984d9a1c03f9c9dae1b, type: 3}

@@ -21,6 +21,8 @@ namespace LudumDare51.Rounds
 
         public int bestOf = 3;
 
+        public bool isMultiplayer = false;
+
         public List<AudioClip> roundClips;
         public List<AudioClip> extraRoundsClips;
 
