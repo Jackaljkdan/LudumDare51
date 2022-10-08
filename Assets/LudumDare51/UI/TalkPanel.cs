@@ -6,7 +6,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Experimental.AI;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace LudumDare51.UI
 {
@@ -41,6 +43,16 @@ namespace LudumDare51.UI
         {
             group.alpha = 0;
             group.DOFade(1, 0.25f);
+        }
+
+        private static List<Text> buffer = new List<Text>(4);
+
+        private void Start()
+        {
+            GetComponentsInChildren(buffer);
+
+            foreach (var text in buffer)
+                text.text = Tokens.Format(text.text);
         }
 
         private void Update()

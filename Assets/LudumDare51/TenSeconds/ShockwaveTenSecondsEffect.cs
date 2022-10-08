@@ -1,3 +1,5 @@
+using JK.Utils;
+using LudumDare51.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -33,7 +35,7 @@ namespace LudumDare51.TenSeconds
 
         public override string GetInstructions()
         {
-            return "Hold down SPACEBAR to avoid damage!";
+            return Tokens.Format("Hold down {Focus}!");
         }
 
         public override void Revert()
