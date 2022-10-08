@@ -1,3 +1,4 @@
+using JK.PropertyDrawers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,25 +13,28 @@ namespace LudumDare51.Fencer.UI
     {
         #region Inspector
 
+        [RuntimeHeader]
 
+        public bool isDown;
 
         #endregion
 
-        private void Start()
-        {
-
-        }
-
         public void OnPointerDown(PointerEventData eventData)
         {
-            if (enabled)
+            isDown = true;
+            Update();
+        }
+
+        private void Update()
+        {
+            if (interactable && isDown)
                 controller.EnterFocus();
         }
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            if (enabled)
-                controller.ExitFocus();
+            isDown = false;
+            controller.ExitFocus();
         }
     }
 }

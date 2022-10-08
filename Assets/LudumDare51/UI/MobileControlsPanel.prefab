@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 8238318750752122067}
   - component: {fileID: 5040508903476934375}
   - component: {fileID: 4941861359999840020}
-  - component: {fileID: 3438591663487868597}
+  - component: {fileID: 2221183133155386361}
   m_Layer: 5
   m_Name: FocusButton
   m_TagString: Untagged
@@ -173,7 +173,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   injectionId: player
   controller: {fileID: 0}
---- !u!114 &3438591663487868597
+  roundsManager: {fileID: 0}
+  isDown: 0
+--- !u!114 &2221183133155386361
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -182,11 +184,41 @@ MonoBehaviour:
   m_GameObject: {fileID: 3365658260248112672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be152d510b142fb40b225074ea08069f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 4941861359999840020}
-  roundsManager: {fileID: 0}
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 5040508903476934375}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4673353339345508883
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,7 +232,6 @@ GameObject:
   - component: {fileID: 4673353339345508909}
   - component: {fileID: 4673353339345508911}
   - component: {fileID: 3358322812774969297}
-  - component: {fileID: 4673353339345508910}
   m_Layer: 5
   m_Name: ParryButton
   m_TagString: Untagged
@@ -329,21 +360,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   injectionId: player
   controller: {fileID: 0}
-  isAttackButton: 0
---- !u!114 &4673353339345508910
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4673353339345508883}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be152d510b142fb40b225074ea08069f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 3358322812774969297}
   roundsManager: {fileID: 0}
+  isAttackButton: 0
 --- !u!1 &4673353339584809635
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,7 +451,6 @@ GameObject:
   - component: {fileID: 4673353340012361339}
   - component: {fileID: 4673353340012361333}
   - component: {fileID: 1304995697594104237}
-  - component: {fileID: 4673353340012361332}
   m_Layer: 5
   m_Name: AttackButton
   m_TagString: Untagged
@@ -561,21 +578,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   injectionId: player
   controller: {fileID: 0}
-  isAttackButton: 1
---- !u!114 &4673353340012361332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4673353340012361337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be152d510b142fb40b225074ea08069f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1304995697594104237}
   roundsManager: {fileID: 0}
+  isAttackButton: 1
 --- !u!1 &4673353340299549751
 GameObject:
   m_ObjectHideFlags: 0

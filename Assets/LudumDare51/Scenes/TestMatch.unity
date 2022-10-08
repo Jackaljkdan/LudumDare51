@@ -842,7 +842,7 @@ PrefabInstance:
     - target: {fileID: 6399431311667869841, guid: 0b07ab58d99a246448ae8308b2603fa7,
         type: 3}
       propertyPath: attributes.maxHealthPoints._value
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6399431311667869846, guid: 0b07ab58d99a246448ae8308b2603fa7,
         type: 3}

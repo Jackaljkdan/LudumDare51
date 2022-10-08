@@ -17,14 +17,15 @@ namespace LudumDare51.Fencer.UI
 
         #endregion
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             GetComponent<Button>().onClick.AddListener(OnClicked);
         }
 
         private void OnClicked()
         {
-            if (!enabled)
+            if (!interactable)
                 return;
 
             if (isAttackButton)

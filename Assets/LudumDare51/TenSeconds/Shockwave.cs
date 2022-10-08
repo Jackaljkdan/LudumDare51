@@ -35,7 +35,7 @@ namespace LudumDare51.TenSeconds
 
             player = context.Get<FencerController>(this, "player");
             ai = context.Get<FencerController>(this, "ai");
-            soundsAudioSource = context.Get<AudioSource>("sounds");
+            soundsAudioSource = context.Get<AudioSource>(this, "sounds");
         }
 
         private void Start()

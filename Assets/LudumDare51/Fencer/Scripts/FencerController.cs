@@ -42,6 +42,13 @@ namespace LudumDare51.Fencer
 
         public FencerStance stance;
 
+        [ContextMenu("Get Hit")]
+        private void GetHidInEditMode()
+        {
+            if (Application.isPlaying)
+                GetHit(stance, 1);
+        }
+
         private void Reset()
         {
             animator = GetComponent<Animator>();
