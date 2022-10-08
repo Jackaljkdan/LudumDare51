@@ -193,7 +193,6 @@ GameObject:
   - component: {fileID: 150057508}
   - component: {fileID: 150057507}
   - component: {fileID: 150057506}
-  - component: {fileID: 150057505}
   m_Layer: 5
   m_Name: ParryButton
   m_TagString: Untagged
@@ -222,20 +221,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0.5}
---- !u!114 &150057505
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 150057503}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be152d510b142fb40b225074ea08069f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 150057506}
-  roundsManager: {fileID: 2035494182}
 --- !u!114 &150057506
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   injectionId: player
   controller: {fileID: 0}
+  roundsManager: {fileID: 0}
   isAttackButton: 0
 --- !u!114 &150057507
 MonoBehaviour:
@@ -1000,7 +986,6 @@ GameObject:
   - component: {fileID: 1186696197}
   - component: {fileID: 1186696196}
   - component: {fileID: 1186696195}
-  - component: {fileID: 1186696194}
   m_Layer: 5
   m_Name: ParryButton
   m_TagString: Untagged
@@ -1029,20 +1014,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0.5}
---- !u!114 &1186696194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1186696192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be152d510b142fb40b225074ea08069f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1186696195}
-  roundsManager: {fileID: 2035494182}
 --- !u!114 &1186696195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1057,6 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   injectionId: ai
   controller: {fileID: 0}
+  roundsManager: {fileID: 0}
   isAttackButton: 0
 --- !u!114 &1186696196
 MonoBehaviour:
@@ -1291,7 +1263,6 @@ GameObject:
   - component: {fileID: 1507101934}
   - component: {fileID: 1507101933}
   - component: {fileID: 1507101932}
-  - component: {fileID: 1507101931}
   m_Layer: 5
   m_Name: AttackButton
   m_TagString: Untagged
@@ -1319,20 +1290,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &1507101931
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1507101929}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be152d510b142fb40b225074ea08069f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1507101932}
-  roundsManager: {fileID: 2035494182}
 --- !u!114 &1507101932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1347,6 +1304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   injectionId: player
   controller: {fileID: 0}
+  roundsManager: {fileID: 0}
   isAttackButton: 1
 --- !u!114 &1507101933
 MonoBehaviour:
@@ -1529,7 +1487,6 @@ GameObject:
   - component: {fileID: 1604837547}
   - component: {fileID: 1604837546}
   - component: {fileID: 1604837545}
-  - component: {fileID: 1604837544}
   m_Layer: 5
   m_Name: AttackButton
   m_TagString: Untagged
@@ -1557,20 +1514,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
---- !u!114 &1604837544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1604837542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be152d510b142fb40b225074ea08069f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1604837545}
-  roundsManager: {fileID: 2035494182}
 --- !u!114 &1604837545
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1585,6 +1528,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   injectionId: ai
   controller: {fileID: 0}
+  roundsManager: {fileID: 0}
   isAttackButton: 1
 --- !u!114 &1604837546
 MonoBehaviour:
@@ -2624,7 +2568,7 @@ PrefabInstance:
     - target: {fileID: 8405218807987667347, guid: 41a30aa5175c6984d9a1c03f9c9dae1b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1859321426984801026, guid: 41a30aa5175c6984d9a1c03f9c9dae1b, type: 3}
